@@ -9,7 +9,7 @@ class AgentWebClient {
 
     suspend fun buscaTodos(): List<Agent>?{
         return try {
-            val agentsReponse = agentService.buscaTodos()
+            val agentsReponse = agentService.getAll()
 
             agentsReponse.data.map { agent ->
                 agent.agent

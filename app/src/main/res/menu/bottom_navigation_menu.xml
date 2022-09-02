@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/page_all"
+        android:enabled="true"
+        android:icon="@drawable/valorant_logo"
+        android:title="@string/todos" />
+    <item
+        android:id="@+id/page_initiator"
+        android:enabled="true"
+        android:icon="@drawable/iniciador"
+        android:title="@string/iniciador" />
+    <item
+        android:id="@+id/page_controller"
+        android:enabled="true"
+        android:icon="@drawable/controlador"
+        android:title="@string/controlador" />
+    <item
+        android:id="@+id/page_sentinel"
+        android:enabled="true"
+        android:icon="@drawable/sentinela"
+        android:title="@string/sentinela" />
+    <item
+        android:id="@+id/page_duelist"
+        android:enabled="true"
+        android:icon="@drawable/duelista"
+        android:title="@string/duelista"/>
+
+</menu>

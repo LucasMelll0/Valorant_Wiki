@@ -7,6 +7,6 @@ import retrofit2.http.GET
 
 interface AgentService {
 
-    @GET("agents")
-    suspend fun buscaTodos() : AgentResponse
+    @GET("agents?language=pt-BR&isPlayableCharacter=true")
+    suspend fun getAll() : AgentResponse
 }

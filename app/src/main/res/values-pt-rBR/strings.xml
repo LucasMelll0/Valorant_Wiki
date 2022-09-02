@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Valorant Wiki</string>
+    <string name="agentes">Agentes</string>
+    <string name="mapas">Mapas</string>
+    <string name="todos">todos</string>
+    <string name="iniciador">iniciador</string>
+    <string name="controlador">controlador</string>
+    <string name="sentinela">sentinela</string>
+    <string name="duelista">duelista</string>
+</resources>

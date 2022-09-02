@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Valorant Wiki</string>
+    <string name="agentes">Agents</string>
+    <string name="mapas">Maps</string>
+    <string name="todos">all</string>
+    <string name="iniciador">initiator</string>
+    <string name="controlador">controller</string>
+    <string name="sentinela">sentinel</string>
+    <string name="duelista">duelist</string>
 </resources>
