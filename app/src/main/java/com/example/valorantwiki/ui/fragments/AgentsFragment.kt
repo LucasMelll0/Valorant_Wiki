@@ -31,12 +31,13 @@ class AgentsFragment : Fragment() {
         super.onCreate(savedInstanceState)
         setsUpBottomNavigation()
         setsUpRecyclerView()
+        getAgents()
     }
 
-    override fun onResume() {
-        super.onResume()
+    private fun getAgents() {
         lifecycleScope.launch {
-            val agents = repository.buscaTodos()
+            val language = resources.getString(R.string.linguagem)
+            val agents = repository.getAll(language)
             adapter.addAll(agents)
         }
     }

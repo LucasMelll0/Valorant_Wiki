@@ -47,6 +47,7 @@
                 tools:text="Sova"
                 android:textColor="@color/black"
                 android:fontFamily="@font/roboto_bold_italic"
+                android:textStyle="bold"
                 android:layout_marginTop="16dp"/>
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/textview_agent_item_class"

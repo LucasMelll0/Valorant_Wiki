@@ -1,6 +1,7 @@
 package com.example.valorantwiki.webclient
 
 import com.example.valorantwiki.webclient.services.AgentService
+import com.example.valorantwiki.webclient.services.MapService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -25,4 +26,5 @@ class RetrofitInicializer {
         .build()
 
     val agentService = retrofit.create(AgentService::class.java)
+    val mapService = retrofit.create(MapService::class.java)
 }

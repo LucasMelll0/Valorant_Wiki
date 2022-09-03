@@ -1,21 +1,49 @@
 package com.example.valorantwiki.ui.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.valorantwiki.R
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import com.example.valorantwiki.databinding.FragmentMapsBinding
+import com.example.valorantwiki.repository.MapRepository
+import com.example.valorantwiki.ui.TAG
+import com.example.valorantwiki.ui.recyclerview.adapter.MapsAdapter
+import com.example.valorantwiki.webclient.MapWebClient
+import kotlinx.coroutines.launch
 
 
 class MapsFragment : Fragment() {
+
+    private val binding by lazy { FragmentMapsBinding.inflate(layoutInflater) }
+    private val repository by lazy { MapRepository(MapWebClient()) }
+    private val adapter by lazy { MapsAdapter(requireContext()) }
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_maps, container, false)
+        return binding.root
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setsUpRecyclerView()
+        loadMaps()
+    }
+
+    private fun loadMaps() {
+        lifecycleScope.launch{
+            val maps = repository.getAll()
+            adapter.addAll(maps)
+        }
+    }
+
+    private fun setsUpRecyclerView() {
+        binding.recyclerviewMaps.adapter = adapter
     }
 }

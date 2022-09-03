@@ -7,9 +7,9 @@ class AgentWebClient {
 
     private val agentService = RetrofitInicializer().agentService
 
-    suspend fun buscaTodos(): List<Agent>?{
+    suspend fun getAll(language: String): List<Agent>?{
         return try {
-            val agentsReponse = agentService.getAll()
+            val agentsReponse = agentService.getAll(language)
 
             agentsReponse.data.map { agent ->
                 agent.agent

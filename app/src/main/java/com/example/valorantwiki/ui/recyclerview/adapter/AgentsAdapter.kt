@@ -37,13 +37,14 @@ class AgentsAdapter(
     }
 
     override fun onBindViewHolder(holder: AgentsViewHolder, position: Int) {
-        holder.bindItem(dataSet.get(position))
+        holder.bindItem(dataSet[position])
     }
 
     override fun getItemCount(): Int = dataSet.size
 
     @SuppressLint("NotifyDataSetChanged")
     fun addAll(agents: List<Agent>){
+        dataSet.clear()
         dataSet.addAll(agents)
         notifyDataSetChanged()
     }

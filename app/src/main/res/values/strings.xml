@@ -7,4 +7,5 @@
     <string name="controlador">controller</string>
     <string name="sentinela">sentinel</string>
     <string name="duelista">duelist</string>
+    <string name="linguagem">en-US</string>
 </resources>
