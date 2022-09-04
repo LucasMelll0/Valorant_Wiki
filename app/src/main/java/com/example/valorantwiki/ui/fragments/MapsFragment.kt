@@ -1,7 +1,6 @@
 package com.example.valorantwiki.ui.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.example.valorantwiki.databinding.FragmentMapsBinding
 import com.example.valorantwiki.repository.MapRepository
-import com.example.valorantwiki.ui.TAG
 import com.example.valorantwiki.ui.recyclerview.adapter.MapsAdapter
 import com.example.valorantwiki.webclient.MapWebClient
 import kotlinx.coroutines.launch
@@ -18,7 +16,12 @@ import kotlinx.coroutines.launch
 class MapsFragment : Fragment() {
 
     private val binding by lazy { FragmentMapsBinding.inflate(layoutInflater) }
-    private val repository by lazy { MapRepository(MapWebClient()) }
+    private val repository by lazy {
+        MapRepository(
+            requireContext(),
+            MapWebClient()
+        )
+    }
     private val adapter by lazy { MapsAdapter(requireContext()) }
 
 
@@ -26,7 +29,6 @@ class MapsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
         return binding.root
     }
 
@@ -37,7 +39,7 @@ class MapsFragment : Fragment() {
     }
 
     private fun loadMaps() {
-        lifecycleScope.launch{
+        lifecycleScope.launch {
             val maps = repository.getAll()
             adapter.addAll(maps)
         }

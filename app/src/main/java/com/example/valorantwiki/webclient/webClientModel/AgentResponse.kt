@@ -20,10 +20,10 @@ data class AgentResponseClass(
     val agent: Agent
         get() = Agent(
             uuid = this.uuid,
-            displayName = this.displayName ?: "",
+            name = this.displayName ?: "",
             description = this.description ?: "",
-            fullPortrait = this.fullPortrait ?: "",
-            backgroundGradientColors = this.backgroundGradientColors ?: emptyList(),
+            image = this.fullPortrait ?: "",
+            backgrondColor = this.backgroundGradientColors?.get(2) ?: "",
             role = this.role ?: Role(
                 "",
                 ""

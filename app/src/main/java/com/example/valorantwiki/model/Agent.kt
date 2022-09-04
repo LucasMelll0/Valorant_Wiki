@@ -5,14 +5,14 @@ import com.example.valorantwiki.webclient.webClientModel.Role
 
 data class Agent(
     val uuid: String,
-    val displayName: String,
+    val name: String,
     val description: String,
-    val fullPortrait: String,
-    val backgroundGradientColors: List<String>,
+    val image: String,
+    val backgrondColor: String,
     val role: Role,
     val abilities: List<Abilitie>
 ){
     override fun toString(): String {
-        return "$displayName \n"
+        return "$name \n"
     }
 }

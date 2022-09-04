@@ -1,4 +1,4 @@
-package com.example.valorantwiki.ui
+package com.example.valorantwiki.ui.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

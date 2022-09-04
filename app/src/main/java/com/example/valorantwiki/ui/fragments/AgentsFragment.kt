@@ -18,7 +18,12 @@ class AgentsFragment : Fragment() {
 
     private val binding by lazy { FragmentAgentsBinding.inflate(layoutInflater) }
     private val adapter by lazy { AgentsAdapter(requireContext()) }
-    private val repository by lazy { AgentRepository(AgentWebClient()) }
+    private val repository by lazy {
+        AgentRepository(
+            requireContext(),
+            AgentWebClient()
+        )
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,8 +41,7 @@ class AgentsFragment : Fragment() {
 
     private fun getAgents() {
         lifecycleScope.launch {
-            val language = resources.getString(R.string.linguagem)
-            val agents = repository.getAll(language)
+            val agents = repository.getAll()
             adapter.addAll(agents)
         }
     }

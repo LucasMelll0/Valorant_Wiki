@@ -30,7 +30,8 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:backgroundTint="@color/red_valorant">
+                android:backgroundTint="@color/red_valorant"
+                >
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/imageview_agent_item"
                     android:layout_width="match_parent"
