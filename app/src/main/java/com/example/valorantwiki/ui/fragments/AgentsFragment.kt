@@ -41,8 +41,10 @@ class AgentsFragment : Fragment() {
 
     private fun getAgents() {
         lifecycleScope.launch {
+            binding.progressbarAgentsFragment.visibility = View.VISIBLE
             val agents = repository.getAll()
             adapter.addAll(agents)
+            binding.progressbarAgentsFragment.visibility = View.GONE
         }
     }
 

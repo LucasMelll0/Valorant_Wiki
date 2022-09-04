@@ -40,8 +40,10 @@ class MapsFragment : Fragment() {
 
     private fun loadMaps() {
         lifecycleScope.launch {
+            binding.progressbarMapsFragment.visibility = View.VISIBLE
             val maps = repository.getAll()
             adapter.addAll(maps)
+            binding.progressbarMapsFragment.visibility = View.GONE
         }
     }
 

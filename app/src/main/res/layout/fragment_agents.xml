@@ -11,6 +11,17 @@
         android:layout_height="match_parent"
         android:layout_gravity="top"
         android:background="@color/white_valorant">
+        <ProgressBar
+            android:id="@+id/progressbar_agents_fragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:translationZ="50dp"
+            android:visibility="gone"
+            />
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview_agents"
             android:layout_width="match_parent"
