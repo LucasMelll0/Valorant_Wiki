@@ -56,23 +56,23 @@ class AgentsFragment : Fragment() {
         binding.bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.page_all -> {
-                    println("all")
+                    lifecycleScope.launch{ adapter.addAll(repository.getAll()) }
                     true
                 }
                 R.id.page_initiator -> {
-                    println("initiator")
+                    adapter.addAll(repository.getInitiators())
                     true
                 }
                 R.id.page_controller -> {
-                    println("controler")
+                    adapter.addAll(repository.getControllers())
                     true
                 }
                 R.id.page_sentinel -> {
-                    println("sentinel")
+                    adapter.addAll(repository.getSentinels())
                     true
                 }
                 R.id.page_duelist -> {
-                    println("duelist")
+                    adapter.addAll(repository.getDuelists())
                     true
                 }
                 else -> false

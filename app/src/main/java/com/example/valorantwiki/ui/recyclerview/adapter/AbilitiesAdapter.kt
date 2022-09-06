@@ -31,6 +31,7 @@ class AbilitiesAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AbilityViewHolder {
         val binding = AbilityItemBinding.inflate(LayoutInflater.from(context), parent, false)
+
         return AbilityViewHolder(binding)
     }
 
