@@ -166,7 +166,10 @@
                 app:layout_constraintStart_toStartOf="@id/abilities_title"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="16dp"/>
+                android:layout_marginEnd="16dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/ability_item"
+                tools:itemCount="4"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>

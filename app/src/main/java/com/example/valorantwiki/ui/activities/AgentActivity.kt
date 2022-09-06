@@ -10,6 +10,7 @@ import com.example.valorantwiki.databinding.ActivityAgentBinding
 import com.example.valorantwiki.model.Agent
 import com.example.valorantwiki.repository.AgentRepository
 import com.example.valorantwiki.ui.activities.extensions.formatStrToColorStr
+import com.example.valorantwiki.ui.recyclerview.adapter.AbilitiesAdapter
 import com.example.valorantwiki.webclient.AgentWebClient
 import kotlinx.coroutines.launch
 
@@ -35,23 +36,28 @@ class AgentActivity : AppCompatActivity() {
         lifecycleScope.launch {
             intent.extras?.getString(AGENT_UUID)?.let { uuid ->
                 repository.getById(uuid)?.let { agent ->
-                    binding.apply {
-                        fillFields(agent)
-                    }
+                    fillFields(agent)
                 } ?: finish()
             }
 
         }
     }
 
-    private fun ActivityAgentBinding.fillFields(agent: Agent) {
-        val backgroundColorFormated = agent.backgrondColor.formatStrToColorStr()
-        cardviewToolbarAgentActivity.setCardBackgroundColor(Color.parseColor("#${backgroundColorFormated}"))
-        window.statusBarColor = Color.parseColor("#${backgroundColorFormated}")
-        imageviewPortraitAgentActivity.load(agent.image)
-        textviewNameAgentActivity.text = agent.name
-        textviewClassAgentActivity.text = agent.role.displayName
-        textviewClassDescriptionAgentActivity.text = agent.role.description
-        textviewAgentDescriptionAgentActivity.text = agent.description
+    private fun fillFields(agent: Agent) {
+        binding.apply {
+            val backgroundColorFormated = agent.backgrondColor.formatStrToColorStr()
+            cardviewToolbarAgentActivity.setCardBackgroundColor(Color.parseColor("#${backgroundColorFormated}"))
+            window.statusBarColor = Color.parseColor("#${backgroundColorFormated}")
+            imageviewPortraitAgentActivity.load(agent.image)
+            textviewNameAgentActivity.text = agent.name
+            textviewClassAgentActivity.text = agent.role.displayName
+            textviewClassDescriptionAgentActivity.text = agent.role.description
+            textviewAgentDescriptionAgentActivity.text = agent.description
+            recyclerviewAbilitiesAgentActivity.adapter = AbilitiesAdapter(
+                context = this@AgentActivity,
+                backgroundColor = backgroundColorFormated,
+                abilityList = agent.abilities
+            )
+        }
     }
 }

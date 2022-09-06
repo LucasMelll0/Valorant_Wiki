@@ -1,6 +1,6 @@
 package com.example.valorantwiki.model
 
-import com.example.valorantwiki.webclient.webClientModel.Abilitie
+import com.example.valorantwiki.webclient.webClientModel.Ability
 import com.example.valorantwiki.webclient.webClientModel.Role
 
 data class Agent(
@@ -10,7 +10,7 @@ data class Agent(
     val image: String,
     val backgrondColor: String,
     val role: Role,
-    val abilities: List<Abilitie>
+    val abilities: List<Ability>
 ){
     override fun toString(): String {
         return "$name \n"

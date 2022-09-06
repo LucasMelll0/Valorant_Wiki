@@ -2,7 +2,7 @@ package com.example.valorantwiki.webclient.webClientModel
 
 import com.example.valorantwiki.model.Agent
 
-data class allAgentsResponse(
+data class AllAgentsResponse(
     val status: Int,
     val data: List<AgentResponseClass>
 )
@@ -18,7 +18,7 @@ data class AgentResponseClass(
     private val fullPortrait: String?,
     private val backgroundGradientColors: List<String>?,
     private val role: Role?,
-    private val abilities: List<Abilitie>?
+    private val abilities: List<Ability>?
 
 ) {
     val agent: Agent
@@ -41,7 +41,7 @@ data class Role(
     val description: String?,
 )
 
-data class Abilitie(
+data class Ability(
     val slot: String?,
     val displayName: String?,
     val description: String?,

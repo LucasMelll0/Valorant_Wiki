@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardview_ability_item"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:cardCornerRadius="16dp"
+        app:cardBackgroundColor="@color/red_valorant"
+        android:layout_margin="16dp">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageview_ability_icon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </androidx.cardview.widget.CardView>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textview_ability_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Flecha de Choque"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/carbon"
+        android:layout_gravity="center"
+        android:layout_marginStart="16dp"
+        />
+
+</androidx.appcompat.widget.LinearLayoutCompat>
