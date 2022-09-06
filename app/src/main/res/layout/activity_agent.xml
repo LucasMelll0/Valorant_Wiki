@@ -1,9 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".ui.activities.AgentActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:backgroundTint="@color/invisible"
+        android:background="@color/white_valorant">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/invisible"
+            app:contentScrim="@color/invisible"
+            app:layout_scrollFlags="scroll|enterAlwaysCollapsed"
+            app:titleEnabled="false">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardview_toolbar_agent_activity"
+                android:layout_width="match_parent"
+                android:layout_height="390dp"
+                android:layout_marginTop="-40dp"
+                app:cardCornerRadius="32dp"
+                app:cardPreventCornerOverlap="true"
+                tools:backgroundTint="@color/red_valorant">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imageview_portrait_agent_activity"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/imagebutton_back_agent_activity"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_marginTop="40dp"
+                        android:backgroundTint="@color/invisible"
+                        android:contentDescription="@string/botao_voltar"
+                        android:src="@drawable/ic_arrow_back"
+                        android:tint="@color/white_valorant"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="68dp"
+                        android:layout_margin="16dp"
+                        app:cardCornerRadius="24dp"
+                        app:cardElevation="4dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/textview_name_agent_activity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginHorizontal="42dp"
+                            android:fontFamily="@font/roboto_bold_italic"
+                            android:textColor="@color/black"
+                            android:textSize="42sp"
+                            android:textStyle="bold"
+                            tools:text="Sova" />
+                    </androidx.cardview.widget.CardView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/class_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="@string/classe"
+                android:textColor="@color/red_valorant"
+                android:textSize="32sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textview_class_agent_activity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:textColor="@color/carbon"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/class_title"
+                app:layout_constraintTop_toBottomOf="@id/class_title"
+                tools:text="Iniciador" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textview_class_description_agent_activity"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:textColor="@color/carbon"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/class_title"
+                app:layout_constraintTop_toBottomOf="@id/textview_class_agent_activity"
+                tools:text="Iniciadores desafiam situações arriscadas, preparando a equipe para entrar em terreno contestado e rechaçar defensores." />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/agent_description_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/textview_class_description_agent_activity"
+                app:layout_constraintStart_toStartOf="@id/class_title"
+                android:text="@string/descricao"
+                android:textColor="@color/red_valorant"
+                android:textStyle="bold"
+                android:textSize="32sp"
+                android:layout_marginTop="10dp"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textview_agent_description_agent_activity"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/agent_description_title"
+                app:layout_constraintStart_toStartOf="@id/agent_description_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="16dp"
+                tools:text="Nascido sob o eterno inverno das tundras russas, Sova rastreia, encontra e elimina inimigos com eficiência e precisão implacáveis. Seu arco personalizado e suas habilidades inigualáveis de reconhecimento garantem que nenhuma presa escape."
+                android:textColor="@color/carbon"
+                android:textSize="24sp"
+                />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/abilities_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/textview_agent_description_agent_activity"
+                app:layout_constraintStart_toStartOf="@id/agent_description_title"
+                android:text="@string/habilidades"
+                android:textColor="@color/red_valorant"
+                android:textSize="32sp"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview_abilities_agent_activity"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/abilities_title"
+                app:layout_constraintStart_toStartOf="@id/abilities_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="16dp"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

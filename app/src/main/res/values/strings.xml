@@ -8,4 +8,8 @@
     <string name="sentinela">sentinel</string>
     <string name="duelista">duelist</string>
     <string name="linguagem">en-US</string>
+    <string name="botao_voltar">back button</string>
+    <string name="classe">Class</string>
+    <string name="descricao">Description</string>
+    <string name="habilidades">Abilities</string>
 </resources>

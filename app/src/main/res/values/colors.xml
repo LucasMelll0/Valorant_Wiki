@@ -10,4 +10,5 @@
     <color name="white_valorant">#FFFBF5</color>
     <color name="red_valorant">#FD4556</color>
     <color name="carbon">#292929</color>
+    <color name="invisible">#00FFFFFF</color>
 </resources>

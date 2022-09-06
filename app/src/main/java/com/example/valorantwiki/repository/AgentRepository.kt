@@ -13,4 +13,6 @@ class AgentRepository(
 
     suspend fun getAll(): List<Agent> = webClient.getAll(language) ?: emptyList()
 
+    suspend fun getById(uuid: String): Agent? = webClient.getById(uuid, language)
+
 }

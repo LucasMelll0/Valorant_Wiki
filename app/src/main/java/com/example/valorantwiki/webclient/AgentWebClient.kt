@@ -3,6 +3,7 @@ package com.example.valorantwiki.webclient
 import android.util.Log
 import com.example.valorantwiki.R
 import com.example.valorantwiki.model.Agent
+import com.example.valorantwiki.webclient.webClientModel.AgentResponse
 
 class AgentWebClient {
 
@@ -17,6 +18,17 @@ class AgentWebClient {
             }
         }catch (e: Exception){
             Log.e(TAG, "buscaTodos: ", e)
+            null
+        }
+    }
+
+    suspend fun getById(uuid: String, language: String) : Agent? {
+        return try {
+            val agentResponse = agentService.getById(uuid, language)
+
+            agentResponse.data.agent
+        }catch (e: Exception){
+            Log.e(TAG, "getById: ", e)
             null
         }
     }

@@ -9,4 +9,8 @@
     <string name="sentinela">sentinela</string>
     <string name="duelista">duelista</string>
     <string name="linguagem">pt-BR</string>
+    <string name="botao_voltar">botão voltar</string>
+    <string name="classe">Classe</string>
+    <string name="descricao">Descrição</string>
+    <string name="habilidades">Habilidades</string>
 </resources>

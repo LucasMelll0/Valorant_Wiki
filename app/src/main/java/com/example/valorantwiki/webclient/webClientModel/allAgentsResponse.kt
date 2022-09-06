@@ -2,9 +2,13 @@ package com.example.valorantwiki.webclient.webClientModel
 
 import com.example.valorantwiki.model.Agent
 
-data class AgentResponse(
+data class allAgentsResponse(
     val status: Int,
     val data: List<AgentResponseClass>
+)
+data class AgentResponse(
+    val status: Int,
+    val data: AgentResponseClass
 )
 
 data class AgentResponseClass(
@@ -23,7 +27,7 @@ data class AgentResponseClass(
             name = this.displayName ?: "",
             description = this.description ?: "",
             image = this.fullPortrait ?: "",
-            backgrondColor = this.backgroundGradientColors?.get(2) ?: "",
+            backgrondColor = this.backgroundGradientColors?.get(1) ?: "",
             role = this.role ?: Role(
                 "",
                 ""

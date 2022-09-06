@@ -3,17 +3,15 @@ package com.example.valorantwiki.ui.recyclerview.adapter
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
-import android.graphics.PorterDuff
-import android.view.Display
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.graphics.drawable.DrawableCompat
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.valorantwiki.databinding.AgentItemBinding
 import com.example.valorantwiki.model.Agent
 import com.example.valorantwiki.ui.activities.AgentActivity
-import com.example.valorantwiki.ui.activities.agente_uuid
+import com.example.valorantwiki.ui.activities.AGENT_UUID
+import com.example.valorantwiki.ui.activities.extensions.formatStrToColorStr
 import com.example.valorantwiki.ui.activities.goTo
 
 class AgentsAdapter(
@@ -24,10 +22,12 @@ class AgentsAdapter(
     private val dataSet : MutableList<Agent> = agentsList.toMutableList()
 
 
-    inner class AgentsViewHolder(val binding: AgentItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class AgentsViewHolder(private val binding: AgentItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bindItem(agent: Agent) {
             binding.apply {
+                val backgroundColor = agent.backgrondColor.formatStrToColorStr()
+                cardviewAgentItem.setBackgroundColor(Color.parseColor("#$backgroundColor"))
                 imageviewAgentItem.load(agent.image)
                 textviewAgentItemName.text = agent.name
                 textviewAgentItemClass.text = agent.role.displayName
@@ -35,10 +35,11 @@ class AgentsAdapter(
             setsUpClick(agent.uuid)
         }
 
+
         private fun setsUpClick(uuid: String) {
             itemView.setOnClickListener {
                 context.goTo(AgentActivity::class.java){
-                    putExtra(agente_uuid, uuid)
+                    putExtra(AGENT_UUID, uuid)
                 }
             }
         }
