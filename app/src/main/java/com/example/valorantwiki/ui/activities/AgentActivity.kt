@@ -2,7 +2,7 @@ package com.example.valorantwiki.ui.activities
 
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import coil.load
@@ -10,6 +10,7 @@ import com.example.valorantwiki.databinding.ActivityAgentBinding
 import com.example.valorantwiki.model.Agent
 import com.example.valorantwiki.repository.AgentRepository
 import com.example.valorantwiki.ui.activities.extensions.formatStrToColorStr
+import com.example.valorantwiki.ui.dialogs.AbilityDialog
 import com.example.valorantwiki.ui.recyclerview.adapter.AbilitiesAdapter
 import com.example.valorantwiki.webclient.AgentWebClient
 import kotlinx.coroutines.launch
@@ -35,9 +36,12 @@ class AgentActivity : AppCompatActivity() {
     private fun tryToGetAgent() {
         lifecycleScope.launch {
             intent.extras?.getString(AGENT_UUID)?.let { uuid ->
+                binding.progressbarAgentActivity.visibility = View.VISIBLE
                 repository.getById(uuid)?.let { agent ->
                     fillFields(agent)
+                    binding.progressbarAgentActivity.visibility = View.GONE
                 } ?: finish()
+
             }
 
         }
@@ -53,11 +57,20 @@ class AgentActivity : AppCompatActivity() {
             textviewClassAgentActivity.text = agent.role.displayName
             textviewClassDescriptionAgentActivity.text = agent.role.description
             textviewAgentDescriptionAgentActivity.text = agent.description
-            recyclerviewAbilitiesAgentActivity.adapter = AbilitiesAdapter(
-                context = this@AgentActivity,
-                backgroundColor = backgroundColorFormated,
-                abilityList = agent.abilities
-            )
+            setsUpAbilitiesList(backgroundColorFormated, agent)
+        }
+    }
+
+    private fun setsUpAbilitiesList(
+        backgroundColorFormated: String,
+        agent: Agent
+    ) {
+        binding.recyclerviewAbilitiesAgentActivity.adapter = AbilitiesAdapter(
+            context = this@AgentActivity,
+            backgroundColor = backgroundColorFormated,
+            abilityList = agent.abilities
+        ) { ability ->
+            AbilityDialog(ability).show(supportFragmentManager, null)
         }
     }
 }

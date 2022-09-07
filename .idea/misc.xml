@@ -5,12 +5,14 @@
       <map>
         <entry key="..\:/Users/lucas/AndroidStudioProjects/ValorantWiki/app/src/main/res/drawable/rounded_bottom_background.xml" value="0.177" />
         <entry key="..\:/Users/lucas/AndroidStudioProjects/ValorantWiki/app/src/main/res/drawable/top_shadow.xml" value="0.2255" />
+        <entry key="..\:/Users/lucas/AndroidStudioProjects/ValorantWiki/app/src/main/res/layout/ability_dialog.xml" value="0.264" />
         <entry key="..\:/Users/lucas/AndroidStudioProjects/ValorantWiki/app/src/main/res/layout/ability_item.xml" value="0.20512820512820512" />
-        <entry key="..\:/Users/lucas/AndroidStudioProjects/ValorantWiki/app/src/main/res/layout/activity_agent.xml" value="0.1175925925925926" />
+        <entry key="..\:/Users/lucas/AndroidStudioProjects/ValorantWiki/app/src/main/res/layout/activity_agent.xml" value="0.264" />
         <entry key="..\:/Users/lucas/AndroidStudioProjects/ValorantWiki/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/lucas/AndroidStudioProjects/ValorantWiki/app/src/main/res/layout/agent_item.xml" value="0.24635416666666668" />
         <entry key="..\:/Users/lucas/AndroidStudioProjects/ValorantWiki/app/src/main/res/layout/fragment_agents.xml" value="0.4" />
         <entry key="..\:/Users/lucas/AndroidStudioProjects/ValorantWiki/app/src/main/res/layout/fragment_maps.xml" value="0.4" />
+        <entry key="..\:/Users/lucas/AndroidStudioProjects/ValorantWiki/app/src/main/res/layout/loading_dialog.xml" value="0.24895833333333334" />
         <entry key="..\:/Users/lucas/AndroidStudioProjects/ValorantWiki/app/src/main/res/layout/map_item.xml" value="0.264" />
         <entry key="..\:/Users/lucas/AndroidStudioProjects/ValorantWiki/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.25" />
       </map>

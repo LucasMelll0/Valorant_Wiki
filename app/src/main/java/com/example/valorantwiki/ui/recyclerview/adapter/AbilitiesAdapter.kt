@@ -7,12 +7,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.valorantwiki.databinding.AbilityItemBinding
+import com.example.valorantwiki.ui.dialogs.AbilityDialog
 import com.example.valorantwiki.webclient.webClientModel.Ability
 
 class AbilitiesAdapter(
     private val context: Context,
     abilityList: List<Ability> = emptyList(),
-    val backgroundColor: String
+    val backgroundColor: String,
+    val onClick: (ability: Ability) -> Unit = {}
 ) : RecyclerView.Adapter<AbilitiesAdapter.AbilityViewHolder>() {
 
     private val dataSet: MutableList<Ability> = abilityList.toMutableList()
@@ -25,8 +27,10 @@ class AbilitiesAdapter(
                 imageviewAbilityIcon.load(ability.displayIcon)
                 textviewAbilityName.text = ability.displayName
             }
+            itemView.setOnClickListener {
+                onClick(ability)
+            }
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AbilityViewHolder {
