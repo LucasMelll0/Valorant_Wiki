@@ -21,7 +21,7 @@
                 tools:text="Flecha de Choque"
                 android:textColor="@color/carbon"
                 android:textStyle="bold"
-                android:textSize="34sp"
+                android:textSize="36sp"
                 android:layout_margin="16dp"/>
             <View
                 android:id="@+id/line_ability_dialog"
@@ -42,7 +42,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 tools:text="EQUIPE um arco com uma flecha de choque. DISPARE para lançar a flecha que explode ao impacto, causando dano aos jogadores próximos. SEGURE DISPARO para estender o alcance do projétil. Use o DISPARO ALTERNATIVO para adicionar até dois ricochetes à flecha."
                 android:textColor="@color/carbon"
-                android:textSize="16sp"
+                android:textSize="24sp"
                 android:layout_marginHorizontal="22dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="16dp"

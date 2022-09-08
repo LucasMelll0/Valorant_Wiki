@@ -4,9 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.MainActivity"
+    tools:context=".ui.activities.MainActivity"
     android:orientation="vertical"
     >
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/splash_screen_loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        tools:visibility="visible">
+        <include
+
+            layout="@layout/splash_screen"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:elevation="200dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+    </androidx.appcompat.widget.LinearLayoutCompat>
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"

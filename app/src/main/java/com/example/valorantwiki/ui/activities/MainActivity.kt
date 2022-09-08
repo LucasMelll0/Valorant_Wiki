@@ -1,8 +1,8 @@
 package com.example.valorantwiki.ui.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.valorantwiki.R
 import com.example.valorantwiki.databinding.ActivityMainBinding
@@ -23,10 +23,20 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        configuraTabLayout()
+        setsUpTabLayout()
+        getAgentsForFirstInit()
+
     }
 
-    private fun configuraTabLayout(){
+    private fun getAgentsForFirstInit() {
+        lifecycleScope.launch {
+            binding.splashScreenLoading.visibility =View.VISIBLE
+            AgentRepository(this@MainActivity, AgentWebClient()).getAll()
+            binding.splashScreenLoading.visibility =View.GONE
+        }
+    }
+
+    private fun setsUpTabLayout(){
         val adapter = ViewPagerAdapter(this)
         binding.apply {
             viewPager.adapter = adapter
