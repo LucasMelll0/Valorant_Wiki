@@ -18,4 +18,14 @@ class MapWebClient {
             null
         }
     }
+    suspend fun getById(uuid: String, language: String): Map?{
+        return try {
+            val mapResponse = mapService.getById(uuid, language)
+
+            mapResponse.data.map
+        }catch (e: Exception){
+            Log.e(TAG, "getById: ", e)
+            null
+        }
+    }
 }

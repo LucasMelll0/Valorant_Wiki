@@ -16,6 +16,9 @@
         android:theme="@style/Theme.ValorantWiki"
         tools:targetApi="31">
         <activity
+            android:name=".ui.activities.MapActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activities.AgentActivity"
             android:exported="false" />
         <activity

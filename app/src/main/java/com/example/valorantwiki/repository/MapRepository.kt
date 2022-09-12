@@ -12,4 +12,6 @@ class MapRepository(
     private val language = context.getString(R.string.linguagem)
 
    suspend fun getAll() : List<Map> = mapWebClient.getAll() ?: emptyList()
+
+    suspend fun getById(uuid: String) : Map? = mapWebClient.getById(uuid, language)
 }

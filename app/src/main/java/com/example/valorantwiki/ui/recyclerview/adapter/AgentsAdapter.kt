@@ -12,7 +12,7 @@ import com.example.valorantwiki.model.Agent
 import com.example.valorantwiki.ui.activities.AgentActivity
 import com.example.valorantwiki.ui.activities.AGENT_UUID
 import com.example.valorantwiki.ui.activities.extensions.formatStrToColorStr
-import com.example.valorantwiki.ui.activities.goTo
+import com.example.valorantwiki.ui.activities.extensions.goTo
 
 class AgentsAdapter(
     val context: Context,

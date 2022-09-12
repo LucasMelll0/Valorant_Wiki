@@ -1,4 +1,4 @@
-package com.example.valorantwiki.ui.activities
+package com.example.valorantwiki.ui.activities.extensions
 
 import android.content.Context
 import android.content.Intent

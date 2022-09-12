@@ -2,9 +2,14 @@ package com.example.valorantwiki.webclient.webClientModel
 
 import com.example.valorantwiki.model.Map
 
-data class MapResponse(
+data class AllMapsResponse(
     val status: String,
     val data: List<MapResponseClass>
+)
+
+data class MapResponse(
+    val status: String,
+    val data: MapResponseClass
 )
 
 data class MapResponseClass(

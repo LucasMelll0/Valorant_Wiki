@@ -13,4 +13,6 @@
     <string name="classe">Classe</string>
     <string name="descricao">Descrição</string>
     <string name="habilidades">Habilidades</string>
+    <string name="minimapa">MiniMapa</string>
+    <string name="locais">Locais</string>
 </resources>

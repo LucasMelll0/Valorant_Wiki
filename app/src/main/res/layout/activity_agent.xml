@@ -105,11 +105,11 @@
             android:layout_height="wrap_content">
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/class_title"
+                android:id="@+id/__class_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
                 android:text="@string/classe"
+                android:layout_margin="16dp"
                 android:textColor="@color/red_valorant"
                 android:textSize="32sp"
                 android:textStyle="bold"
@@ -124,8 +124,8 @@
                 android:textColor="@color/carbon"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@id/class_title"
-                app:layout_constraintTop_toBottomOf="@id/class_title"
+                app:layout_constraintStart_toStartOf="@id/__class_title"
+                app:layout_constraintTop_toBottomOf="@id/__class_title"
                 tools:text="Iniciador" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -136,16 +136,16 @@
                 android:textColor="@color/carbon"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@id/class_title"
+                app:layout_constraintStart_toStartOf="@id/__class_title"
                 app:layout_constraintTop_toBottomOf="@id/textview_class_agent_activity"
                 tools:text="Iniciadores desafiam situações arriscadas, preparando a equipe para entrar em terreno contestado e rechaçar defensores." />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/agent_description_title"
+                android:id="@+id/__agent_description_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/textview_class_description_agent_activity"
-                app:layout_constraintStart_toStartOf="@id/class_title"
+                app:layout_constraintStart_toStartOf="@id/__class_title"
                 android:text="@string/descricao"
                 android:textColor="@color/red_valorant"
                 android:textStyle="bold"
@@ -155,8 +155,8 @@
                 android:id="@+id/textview_agent_description_agent_activity"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/agent_description_title"
-                app:layout_constraintStart_toStartOf="@id/agent_description_title"
+                app:layout_constraintTop_toBottomOf="@id/__agent_description_title"
+                app:layout_constraintStart_toStartOf="@id/__agent_description_title"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="16dp"
                 tools:text="Nascido sob o eterno inverno das tundras russas, Sova rastreia, encontra e elimina inimigos com eficiência e precisão implacáveis. Seu arco personalizado e suas habilidades inigualáveis de reconhecimento garantem que nenhuma presa escape."
@@ -164,11 +164,11 @@
                 android:textSize="24sp"
                 />
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/abilities_title"
+                android:id="@+id/__abilities_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/textview_agent_description_agent_activity"
-                app:layout_constraintStart_toStartOf="@id/agent_description_title"
+                app:layout_constraintStart_toStartOf="@id/__agent_description_title"
                 android:text="@string/habilidades"
                 android:textColor="@color/red_valorant"
                 android:textSize="32sp"
@@ -178,8 +178,8 @@
                 android:id="@+id/recyclerview_abilities_agent_activity"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/abilities_title"
-                app:layout_constraintStart_toStartOf="@id/abilities_title"
+                app:layout_constraintTop_toBottomOf="@id/__abilities_title"
+                app:layout_constraintStart_toStartOf="@id/__abilities_title"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="16dp"

@@ -8,6 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.valorantwiki.databinding.MapItemBinding
 import com.example.valorantwiki.model.Map
+import com.example.valorantwiki.ui.activities.MAP_UUID
+import com.example.valorantwiki.ui.activities.MapActivity
+import com.example.valorantwiki.ui.activities.extensions.goTo
 
 class MapsAdapter(
     private val context: Context,
@@ -16,12 +19,17 @@ class MapsAdapter(
 
     private val dataSet: MutableList<Map> = maps.toMutableList()
 
-    class MapsViewHolder(private val binding: MapItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class MapsViewHolder(private val binding: MapItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bindItem(map: Map){
             binding.apply {
                 mapImageItem.load(map.image)
                 mapNameItem.text = map.name
+            }
+            itemView.setOnClickListener {
+                context.goTo(MapActivity::class.java){
+                    putExtra(MAP_UUID, map.uuid)
+                }
             }
         }
 

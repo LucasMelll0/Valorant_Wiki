@@ -10,7 +10,8 @@
         android:layout_height="80dp"
         app:cardCornerRadius="16dp"
         app:cardBackgroundColor="@color/red_valorant"
-        android:layout_margin="16dp">
+        android:layout_margin="16dp"
+        app:cardPreventCornerOverlap="true">
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imageview_ability_icon"
             android:layout_width="match_parent"
