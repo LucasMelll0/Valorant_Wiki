@@ -1,14 +1,18 @@
 package com.example.valorantwiki.ui.activities
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import coil.load
+import com.example.valorantwiki.R
 import com.example.valorantwiki.databinding.ActivityMapBinding
 import com.example.valorantwiki.model.Map
 import com.example.valorantwiki.repository.MapRepository
+import com.example.valorantwiki.ui.recyclerview.adapter.PlacesAdapter
 import com.example.valorantwiki.webclient.MapWebClient
+import com.example.valorantwiki.webclient.webClientModel.Place
 import kotlinx.coroutines.launch
 
 class MapActivity : AppCompatActivity() {
@@ -45,7 +49,32 @@ class MapActivity : AppCompatActivity() {
         binding.apply {
             imageviewPortraitMapActivity.load(map.image)
             textviewNameMapActivity.text = map.name
-            imageviewMinimapMapActivity.load(map.miniMap)
+            setsUpMiniMapImage(map.miniMap)
+            setsUpPlacesList(map.places)
+        }
+    }
+
+    private fun setsUpMiniMapImage(image: String) {
+        image.isBlank().let {
+            if (it){
+                binding.minimapTitle.text = getString(R.string.nao_tem_minimapa)
+                binding.cardviewMinimap.visibility = View.GONE
+            } else{
+                binding.imageviewMinimapMapActivity.load(image)
+            }
+        }
+    }
+
+    private fun setsUpPlacesList(places: List<Place>) {
+        places.isEmpty().let {
+            if (it){
+                binding.placesTitle.visibility = View.GONE
+                binding.recyclerviewPlacesMapActivity.visibility = View.GONE
+            } else{
+                val adapter = PlacesAdapter(this, places)
+                binding.recyclerviewPlacesMapActivity.adapter = adapter
+
+            }
         }
     }
 }

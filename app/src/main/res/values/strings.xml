@@ -13,5 +13,8 @@
     <string name="descricao">Description</string>
     <string name="habilidades">Abilities</string>
     <string name="minimapa">MiniMap</string>
-    <string name="locais">Locations</string>
+    <string name="locais">Places</string>
+    <string name="local">Place:</string>
+    <string name="regiao">Region:</string>
+    <string name="nao_tem_minimapa">This map  has no minimap!</string>
 </resources>

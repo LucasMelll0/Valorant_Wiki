@@ -15,4 +15,7 @@
     <string name="habilidades">Habilidades</string>
     <string name="minimapa">MiniMapa</string>
     <string name="locais">Locais</string>
+    <string name="local">Local:</string>
+    <string name="regiao">Região:</string>
+    <string name="nao_tem_minimapa">Este mapa não tem minimapa!</string>
 </resources>

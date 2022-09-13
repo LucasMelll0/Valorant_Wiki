@@ -1,6 +1,7 @@
 package com.example.valorantwiki.webclient.webClientModel
 
 import com.example.valorantwiki.model.Map
+import com.squareup.moshi.Json
 
 data class AllMapsResponse(
     val status: String,
@@ -30,6 +31,6 @@ data class MapResponseClass(
 }
 
 class Place(
-    val regionName: String,
-    val superRegionName: String
+     val regionName: String,
+     val superRegionName: String
 )

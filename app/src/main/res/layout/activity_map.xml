@@ -92,7 +92,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/__minimap_title"
+                android:id="@+id/minimap_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent"
@@ -105,15 +105,17 @@
                 android:fontFamily="@font/roboto_bold_italic"
                 />
             <androidx.cardview.widget.CardView
-                android:id="@+id/__cardview_minimap"
+                android:id="@+id/cardview_minimap"
                 android:layout_width="0dp"
                 android:layout_height="320dp"
-                app:layout_constraintTop_toBottomOf="@id/__minimap_title"
-                app:layout_constraintStart_toStartOf="@id/__minimap_title"
+                app:layout_constraintTop_toBottomOf="@id/minimap_title"
+                app:layout_constraintStart_toStartOf="@id/minimap_title"
+                app:layout_constraintBottom_toTopOf="@id/places_title"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="16dp"
                 app:cardCornerRadius="16dp"
                 android:elevation="@dimen/cardview_default_elevation"
+                android:layout_marginVertical="8dp"
                 android:backgroundTint="@color/white_valorant">
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/imageview_minimap_map_activity"
@@ -122,21 +124,25 @@
                     />
             </androidx.cardview.widget.CardView>
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/__locations_title"
+                android:id="@+id/places_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/__cardview_minimap"
-                app:layout_constraintStart_toStartOf="@id/__minimap_title"
+                app:layout_constraintTop_toBottomOf="@id/cardview_minimap"
+                app:layout_constraintStart_toStartOf="@id/minimap_title"
                 android:textColor="@color/red_valorant"
                 android:textSize="32sp"
                 android:textStyle="bold"
                 android:fontFamily="@font/roboto_bold_italic"
                 android:text="@string/locais"
+                android:layout_marginTop="8dp"
                 />
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview_places_map_activity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/__locations_title"/>
+                app:layout_constraintTop_toBottomOf="@id/places_title"
+                android:layout_marginTop="8dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
