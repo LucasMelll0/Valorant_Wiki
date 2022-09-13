@@ -35,16 +35,29 @@ class MapsFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setsUpRecyclerView()
+        setsUpRefreshButton()
         loadMaps()
+    }
+
+    private fun setsUpRefreshButton() {
+        binding.fabRefreshMaps.setOnClickListener {
+            loadMaps()
+        }
     }
 
     private fun loadMaps() {
         lifecycleScope.launch {
+            binding.errorMessageMaps.visibility = View.GONE
             binding.progressbarMapsFragment.visibility = View.VISIBLE
-            val maps = repository.getAll()
-            adapter.addAll(maps)
+            repository.getAll()?.let { maps ->
+                adapter.addAll(maps)
+            } ?: showErrorMessage()
             binding.progressbarMapsFragment.visibility = View.GONE
         }
+    }
+
+    private fun showErrorMessage() {
+        binding.errorMessageMaps.visibility = View.VISIBLE
     }
 
     private fun setsUpRecyclerView() {

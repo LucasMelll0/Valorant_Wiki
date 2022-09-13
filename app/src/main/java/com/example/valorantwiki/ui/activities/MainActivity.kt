@@ -31,8 +31,9 @@ class MainActivity : AppCompatActivity() {
     private fun getAgentsForFirstInit() {
         lifecycleScope.launch {
             binding.splashScreenLoading.visibility =View.VISIBLE
-            AgentRepository(this@MainActivity, AgentWebClient()).getAll()
-            binding.splashScreenLoading.visibility =View.GONE
+            AgentRepository(this@MainActivity, AgentWebClient()).getAll()?.let {
+                binding.splashScreenLoading.visibility = View.GONE
+            } ?: run {  binding.splashScreenLoading.visibility = View.GONE }
         }
     }
 

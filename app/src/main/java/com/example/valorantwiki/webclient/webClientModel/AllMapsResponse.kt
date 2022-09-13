@@ -1,15 +1,14 @@
 package com.example.valorantwiki.webclient.webClientModel
 
 import com.example.valorantwiki.model.Map
-import com.squareup.moshi.Json
 
 data class AllMapsResponse(
-    val status: String,
+    val status: Int,
     val data: List<MapResponseClass>
 )
 
 data class MapResponse(
-    val status: String,
+    val status: Int,
     val data: MapResponseClass
 )
 

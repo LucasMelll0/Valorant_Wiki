@@ -10,20 +10,25 @@ class MapWebClient {
         return try {
             val mapsResponse = mapService.getAll()
 
-            mapsResponse.data.map {
-                it.map
+            return if (mapsResponse.status != 200) {
+                null
+            } else {
+                mapsResponse.data.map {
+                    it.map
+                }
             }
         } catch (e: Exception) {
             Log.e(TAG, "getAll: ", e)
             null
         }
     }
-    suspend fun getById(uuid: String, language: String): Map?{
+
+    suspend fun getById(uuid: String, language: String): Map? {
         return try {
             val mapResponse = mapService.getById(uuid, language)
 
             mapResponse.data.map
-        }catch (e: Exception){
+        } catch (e: Exception) {
             Log.e(TAG, "getById: ", e)
             null
         }

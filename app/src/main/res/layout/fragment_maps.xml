@@ -7,6 +7,44 @@
     android:background="@color/white_valorant"
     tools:context=".ui.fragments.MapsFragment">
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/error_message_maps"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white_valorant"
+        android:translationZ="10dp"
+        >
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/__text_error_message_maps"
+            app:layout_constraintStart_toStartOf="@id/__text_error_message_maps"
+            app:layout_constraintEnd_toEndOf="@id/__text_error_message_maps"
+            app:srcCompat="@drawable/ic_bad"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/__text_error_message_maps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/algo_de_errado_aconteceu"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.44"
+            android:textSize="24sp"
+            android:textColor="@color/carbon"/>
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/fab_refresh_maps"
+            android:layout_marginTop="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/__text_error_message_maps"
+            app:layout_constraintStart_toStartOf="@id/__text_error_message_maps"
+            app:layout_constraintEnd_toEndOf="@id/__text_error_message_maps"
+            app:icon="@drawable/ic_refresh"
+            android:text="@string/recarregar"
+            android:gravity="center"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <ProgressBar

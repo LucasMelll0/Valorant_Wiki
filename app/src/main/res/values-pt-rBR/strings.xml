@@ -18,4 +18,6 @@
     <string name="local">Local:</string>
     <string name="regiao">Região:</string>
     <string name="nao_tem_minimapa">Este mapa não tem minimapa!</string>
+    <string name="algo_de_errado_aconteceu">Algo está errado!!</string>
+    <string name="recarregar">Recarregar</string>
 </resources>

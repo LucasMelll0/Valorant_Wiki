@@ -36,16 +36,29 @@ class AgentsFragment : Fragment() {
         super.onCreate(savedInstanceState)
         setsUpBottomNavigation()
         setsUpRecyclerView()
+        setsUpRefreshButton()
         getAgents()
+    }
+
+    private fun setsUpRefreshButton() {
+        binding.fabRefreshAgents.setOnClickListener {
+            getAgents()
+        }
     }
 
     private fun getAgents() {
         lifecycleScope.launch {
+            binding.errorMessageAgents.visibility = View.GONE
             binding.progressbarAgentsFragment.visibility = View.VISIBLE
-            val agents = repository.getAll()
-            adapter.addAll(agents)
+            repository.getAll()?.let {
+                adapter.addAll(it)
+            } ?: showErroMessage()
             binding.progressbarAgentsFragment.visibility = View.GONE
         }
+    }
+
+    private fun showErroMessage() {
+        binding.errorMessageAgents.visibility = View.VISIBLE
     }
 
     private fun setsUpRecyclerView() {
@@ -56,7 +69,7 @@ class AgentsFragment : Fragment() {
         binding.bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.page_all -> {
-                    lifecycleScope.launch{ adapter.addAll(repository.getAll()) }
+                    lifecycleScope.launch { adapter.addAll(repository.getAll() ?: emptyList()) }
                     true
                 }
                 R.id.page_initiator -> {
