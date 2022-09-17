@@ -13,7 +13,9 @@ class AgentRepository(
 ) {
     private val language = context.getString(R.string.linguagem)
 
-    private var agentsList: List<Agent>? = null
+    companion object{
+        private var agentsList: List<Agent>? = null
+    }
 
     suspend fun getAll(): List<Agent>? {
         agentsList?.let {

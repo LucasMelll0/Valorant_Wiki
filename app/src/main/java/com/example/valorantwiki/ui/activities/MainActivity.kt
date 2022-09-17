@@ -16,6 +16,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.coroutines.launch
 
 const val TAG = "Testes MainActivity"
+
 class MainActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
@@ -23,30 +24,31 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        setsUpTabLayout()
         getAgentsForFirstInit()
 
     }
 
     private fun getAgentsForFirstInit() {
         lifecycleScope.launch {
-            binding.splashScreenLoading.visibility =View.VISIBLE
-            AgentRepository(this@MainActivity, AgentWebClient()).getAll()?.let {
-                binding.splashScreenLoading.visibility = View.GONE
-            } ?: run {  binding.splashScreenLoading.visibility = View.GONE }
+            binding.splashScreenLoading.visibility = View.VISIBLE
+            AgentRepository(this@MainActivity, AgentWebClient()).getAll()
+            setsUpTabLayout()
+            binding.splashScreenLoading.visibility = View.GONE
+
         }
     }
 
-    private fun setsUpTabLayout(){
+    private fun setsUpTabLayout() {
         val adapter = ViewPagerAdapter(this)
         binding.apply {
             viewPager.adapter = adapter
             adapter.addFragment(AgentsFragment(), getString(R.string.agentes))
             adapter.addFragment(MapsFragment(), getString(R.string.mapas))
             viewPager.offscreenPageLimit = adapter.itemCount
-            val mediator = TabLayoutMediator(tabLayout, viewPager){ tab: TabLayout.Tab, position:Int ->
-                tab.text = adapter.getTitle(position)
-            }
+            val mediator =
+                TabLayoutMediator(tabLayout, viewPager) { tab: TabLayout.Tab, position: Int ->
+                    tab.text = adapter.getTitle(position)
+                }
             mediator.attach()
         }
     }
