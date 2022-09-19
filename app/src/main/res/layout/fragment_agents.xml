@@ -73,11 +73,12 @@
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavigation"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="70dp"
             android:layout_gravity="bottom"
             app:menu="@menu/bottom_navigation_menu"
             android:background="@color/white_valorant"
             app:itemIconTint="@color/red_valorant"
+            app:itemIconSize="35dp"
             app:elevation="@dimen/cardview_default_elevation"
             app:layout_constraintBottom_toBottomOf="parent"/>
 

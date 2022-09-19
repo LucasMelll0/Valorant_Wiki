@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.valorantwiki.databinding.AbilityItemBinding
-import com.example.valorantwiki.ui.dialogs.AbilityDialog
 import com.example.valorantwiki.webclient.webClientModel.Ability
 
 class AbilitiesAdapter(
