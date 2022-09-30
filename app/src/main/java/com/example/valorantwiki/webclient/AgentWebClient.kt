@@ -11,7 +11,7 @@ class AgentWebClient {
         return try {
             val agentsResponse = agentService.getAll(language)
 
-            return if (agentsResponse.status == 200) {
+            if (agentsResponse.status == 200) {
                 agentsResponse.data.map { agent ->
                     agent.agent
                 }

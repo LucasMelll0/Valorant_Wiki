@@ -13,59 +13,56 @@ class AgentRepository(
 ) {
     private val language = context.getString(R.string.linguagem)
 
-    companion object{
+    companion object {
         private var agentsList: List<Agent>? = null
     }
 
     suspend fun getAll(): List<Agent>? {
-        agentsList?.let {
-            return it
-        } ?: run {
+        return agentsList ?: run {
             Log.i(TAG, "getAll: Repository")
             webClient.getAll(language)?.let {
                 agentsList = it
-                return agentsList
+                agentsList
             }
-            return null
         }
     }
 
     suspend fun getById(uuid: String): Agent? = webClient.getById(uuid, language)
 
     fun getInitiators(): List<Agent> {
-        agentsList?.let { agents ->
-            return agents.filter { agent ->
+        return agentsList?.let { agents ->
+            agents.filter { agent ->
                 agent.role.displayName?.uppercase() == context.getString(R.string.iniciador)
                     .uppercase()
             }
-        } ?: return emptyList()
+        } ?: emptyList()
     }
 
     fun getControllers(): List<Agent> {
-        agentsList?.let { agents ->
-            return agents.filter { agent ->
+        return agentsList?.let { agents ->
+            agents.filter { agent ->
                 agent.role.displayName?.uppercase() == context.getString(R.string.controlador)
                     .uppercase()
             }
-        } ?: return emptyList()
+        } ?: emptyList()
     }
 
     fun getSentinels(): List<Agent> {
-        agentsList?.let { agents ->
-            return agents.filter { agent ->
+        return agentsList?.let { agents ->
+            agents.filter { agent ->
                 agent.role.displayName?.uppercase() == context.getString(R.string.sentinela)
                     .uppercase()
             }
-        } ?: return emptyList()
+        } ?: emptyList()
     }
 
     fun getDuelists(): List<Agent> {
-        agentsList?.let { agents ->
-            return agents.filter { agent ->
+        return agentsList?.let { agents ->
+            agents.filter { agent ->
                 agent.role.displayName?.uppercase() == context.getString(R.string.duelista)
                     .uppercase()
             }
-        } ?: return emptyList()
+        } ?: emptyList()
     }
 
 

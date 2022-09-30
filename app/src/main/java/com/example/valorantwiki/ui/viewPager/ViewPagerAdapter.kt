@@ -16,7 +16,7 @@ class ViewPagerAdapter(fragmentActivity: FragmentActivity) :
         titleList.add(title)
     }
 
-    override fun createFragment(position: Int): Fragment = fragmentList.get(position)
+    override fun createFragment(position: Int): Fragment = fragmentList[position]
 
     override fun getItemCount(): Int = fragmentList.size
 }

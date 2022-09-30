@@ -13,14 +13,12 @@ class MapRepository(
     private var mapsList: List<Map>? = null
 
     suspend fun getAll(): List<Map>? {
-        mapsList?.let {
-            return it
-        } ?: kotlin.run {
+        return mapsList ?: kotlin.run {
             mapWebClient.getAll()?.let {
                 mapsList = it
-                return mapsList
+                mapsList
             }
-            return null
+
         }
     }
 

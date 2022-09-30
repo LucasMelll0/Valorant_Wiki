@@ -10,7 +10,7 @@ class MapWebClient {
         return try {
             val mapsResponse = mapService.getAll()
 
-            return if (mapsResponse.status != 200) {
+            if (mapsResponse.status != 200) {
                 null
             } else {
                 mapsResponse.data.map {
