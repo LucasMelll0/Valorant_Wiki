@@ -9,7 +9,9 @@ import retrofit2.http.Query
 interface MapService {
 
     @GET("maps?language=pt-BR")
-    suspend fun getAll() : AllMapsResponse
+    suspend fun getAll(
+        @Query("language") language: String
+    ) : AllMapsResponse
 
     @GET("maps/{uuid}")
     suspend fun getById(

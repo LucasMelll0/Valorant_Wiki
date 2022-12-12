@@ -1,9 +1,9 @@
 package com.example.valorantwiki.ui.activities
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import coil.load
 import com.example.valorantwiki.R
@@ -11,6 +11,8 @@ import com.example.valorantwiki.databinding.ActivityMapBinding
 import com.example.valorantwiki.model.Map
 import com.example.valorantwiki.repository.MapRepository
 import com.example.valorantwiki.ui.recyclerview.adapter.PlacesAdapter
+import com.example.valorantwiki.viewmodel.mapviewmodel.MapViewModel
+import com.example.valorantwiki.viewmodel.mapviewmodel.MapViewModelFactory
 import com.example.valorantwiki.webclient.MapWebClient
 import com.example.valorantwiki.webclient.webClientModel.Place
 import kotlinx.coroutines.launch
@@ -18,13 +20,23 @@ import kotlinx.coroutines.launch
 class MapActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivityMapBinding.inflate(layoutInflater) }
-    private val repository by lazy { MapRepository(this, MapWebClient()) }
+    private lateinit var viewmodel: MapViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        setsUpViewModel()
         tryToGetMap()
         setsUpbackButton()
+    }
+
+    private fun setsUpViewModel() {
+        val mapWebClient = MapWebClient()
+        val viewModelFactory = MapViewModelFactory(
+            application,
+            MapRepository(mapWebClient)
+        )
+        viewmodel = ViewModelProvider(this, viewModelFactory)[MapViewModel::class.java]
     }
 
     private fun setsUpbackButton() {
@@ -33,14 +45,17 @@ class MapActivity : AppCompatActivity() {
         }
     }
 
+
     private fun tryToGetMap() {
         intent.getStringExtra(MAP_UUID)?.let { uuid ->
             lifecycleScope.launch {
                 binding.progressbarMapActivity.visibility = View.VISIBLE
-                repository.getById(uuid)?.let { map ->
+                viewmodel.getById(uuid)
+                viewmodel.mapLiveData.observe(this@MapActivity) { map ->
                     fillFields(map)
-                    binding.progressbarMapActivity.visibility = View.GONE
-                } ?: finish()
+                }
+                binding.progressbarMapActivity.visibility = View.GONE
+
             }
         } ?: finish()
     }
@@ -56,10 +71,10 @@ class MapActivity : AppCompatActivity() {
 
     private fun setsUpMiniMapImage(image: String) {
         image.isBlank().let {
-            if (it){
+            if (it) {
                 binding.minimapTitle.text = getString(R.string.nao_tem_minimapa)
                 binding.cardviewMinimap.visibility = View.GONE
-            } else{
+            } else {
                 binding.imageviewMinimapMapActivity.load(image)
             }
         }
@@ -67,10 +82,10 @@ class MapActivity : AppCompatActivity() {
 
     private fun setsUpPlacesList(places: List<Place>) {
         places.isEmpty().let {
-            if (it){
+            if (it) {
                 binding.placesTitle.visibility = View.GONE
                 binding.recyclerviewPlacesMapActivity.visibility = View.GONE
-            } else{
+            } else {
                 val adapter = PlacesAdapter(this, places)
                 binding.recyclerviewPlacesMapActivity.adapter = adapter
 

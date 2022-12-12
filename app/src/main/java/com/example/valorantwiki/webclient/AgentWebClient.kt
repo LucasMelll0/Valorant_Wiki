@@ -1,36 +1,13 @@
 package com.example.valorantwiki.webclient
 
-import android.util.Log
-import com.example.valorantwiki.model.Agent
+import com.example.valorantwiki.webclient.webClientModel.AgentResponse
+import com.example.valorantwiki.webclient.webClientModel.AllAgentsResponse
 
 class AgentWebClient {
 
     private val agentService = RetrofitInicializer().agentService
 
-    suspend fun getAll(language: String): List<Agent>? {
-        return try {
-            val agentsResponse = agentService.getAll(language)
+    suspend fun getAll(language: String): AllAgentsResponse = agentService.getAll(language)
 
-            if (agentsResponse.status == 200) {
-                agentsResponse.data.map { agent ->
-                    agent.agent
-                }
-            } else {
-                null
-            }
-        } catch (e: Exception) {
-            null
-        }
-    }
-
-    suspend fun getById(uuid: String, language: String): Agent? {
-        return try {
-            val agentResponse = agentService.getById(uuid, language)
-
-            agentResponse.data.agent
-        } catch (e: Exception) {
-            Log.e(TAG, "getById: ", e)
-            null
-        }
-    }
+    suspend fun getById(id: String, language: String): AgentResponse = agentService.getById(id, language)
 }

@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import coil.load
 import com.example.valorantwiki.databinding.ActivityAgentBinding
@@ -12,19 +13,32 @@ import com.example.valorantwiki.repository.AgentRepository
 import com.example.valorantwiki.ui.activities.extensions.formatStrToColorStr
 import com.example.valorantwiki.ui.dialogs.AbilityDialog
 import com.example.valorantwiki.ui.recyclerview.adapter.AbilitiesAdapter
+import com.example.valorantwiki.viewmodel.agentviewmodel.AgentViewModel
+import com.example.valorantwiki.viewmodel.agentviewmodel.AgentViewModelFactory
 import com.example.valorantwiki.webclient.AgentWebClient
 import kotlinx.coroutines.launch
 
 class AgentActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivityAgentBinding.inflate(layoutInflater) }
-    private val repository by lazy { AgentRepository(this, AgentWebClient()) }
+    private lateinit var viewmodel: AgentViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        setsUpViewModel()
         tryToGetAgent()
         setsUpButtonBack()
+    }
+
+    private fun setsUpViewModel() {
+        val agentWebClient = AgentWebClient()
+        val viewModelFactory = AgentViewModelFactory(
+            application,
+            AgentRepository(agentWebClient)
+        )
+        viewmodel =
+            ViewModelProvider(this, viewModelFactory)[AgentViewModel::class.java]
     }
 
     private fun setsUpButtonBack() {
@@ -37,14 +51,15 @@ class AgentActivity : AppCompatActivity() {
         lifecycleScope.launch {
             intent.extras?.getString(AGENT_UUID)?.let { uuid ->
                 binding.progressbarAgentActivity.visibility = View.VISIBLE
-                repository.getById(uuid)?.let { agent ->
+                viewmodel.getById(uuid)
+                viewmodel.agentLiveData.observe(this@AgentActivity) { agent ->
                     fillFields(agent)
-                    binding.progressbarAgentActivity.visibility = View.GONE
-                } ?: finish()
-
-            }
+                }
+                binding.progressbarAgentActivity.visibility = View.GONE
+            } ?: finish()
 
         }
+
     }
 
     private fun fillFields(agent: Agent) {

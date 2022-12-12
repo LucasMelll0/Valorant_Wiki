@@ -5,10 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.valorantwiki.databinding.FragmentMapsBinding
 import com.example.valorantwiki.repository.MapRepository
 import com.example.valorantwiki.ui.recyclerview.adapter.MapsAdapter
+import com.example.valorantwiki.viewmodel.maplistviewmodel.MapListViewModel
+import com.example.valorantwiki.viewmodel.maplistviewmodel.MapListViewModelFactory
 import com.example.valorantwiki.webclient.MapWebClient
 import kotlinx.coroutines.launch
 
@@ -16,12 +19,7 @@ import kotlinx.coroutines.launch
 class MapsFragment : Fragment() {
 
     private val binding by lazy { FragmentMapsBinding.inflate(layoutInflater) }
-    private val repository by lazy {
-        MapRepository(
-            requireContext(),
-            MapWebClient()
-        )
-    }
+    private lateinit var viewModel: MapListViewModel
     private val adapter by lazy { MapsAdapter(requireContext()) }
 
 
@@ -34,9 +32,28 @@ class MapsFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setsUpViewModel()
         setsUpRecyclerView()
         setsUpRefreshButton()
         loadMaps()
+    }
+
+    private fun setsUpViewModel() {
+        val application = requireActivity().application
+        val mapWebClient = MapWebClient()
+        val viewModelFactory = MapListViewModelFactory(
+            application,
+            MapRepository(mapWebClient)
+        )
+        viewModel =
+            ViewModelProvider(viewModelStore, viewModelFactory)[MapListViewModel::class.java]
+    }
+
+    override fun onResume() {
+        super.onResume()
+        lifecycleScope.launch {
+            viewModel.getAll()
+        }
     }
 
     private fun setsUpRefreshButton() {
@@ -46,15 +63,21 @@ class MapsFragment : Fragment() {
     }
 
     private fun loadMaps() {
-        lifecycleScope.launch {
-            binding.errorMessageMaps.visibility = View.GONE
-            binding.progressbarMapsFragment.visibility = View.VISIBLE
-            repository.getAll()?.let { maps ->
-                adapter.addAll(maps)
-            } ?: showErrorMessage()
-            binding.progressbarMapsFragment.visibility = View.GONE
+
+        binding.errorMessageMaps.visibility = View.GONE
+        binding.progressbarMapsFragment.visibility = View.VISIBLE
+        viewModel.mapsLiveData.observe(this) { maps ->
+            if (maps.isNotEmpty()) {
+                adapter.submitList(maps)
+            } else {
+                if (adapter.currentList.isEmpty()) {
+                    showErrorMessage()
+                }
+            }
         }
+        binding.progressbarMapsFragment.visibility = View.GONE
     }
+
 
     private fun showErrorMessage() {
         binding.errorMessageMaps.visibility = View.VISIBLE

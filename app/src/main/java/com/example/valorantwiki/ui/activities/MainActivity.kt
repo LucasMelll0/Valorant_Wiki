@@ -6,16 +6,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.valorantwiki.R
 import com.example.valorantwiki.databinding.ActivityMainBinding
-import com.example.valorantwiki.repository.AgentRepository
 import com.example.valorantwiki.ui.fragments.AgentsFragment
 import com.example.valorantwiki.ui.fragments.MapsFragment
 import com.example.valorantwiki.ui.viewPager.ViewPagerAdapter
-import com.example.valorantwiki.webclient.AgentWebClient
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.coroutines.launch
 
-const val TAG = "Testes MainActivity"
 
 class MainActivity : AppCompatActivity() {
 
@@ -31,7 +28,7 @@ class MainActivity : AppCompatActivity() {
     private fun getAgentsForFirstInit() {
         lifecycleScope.launch {
             binding.splashScreenLoading.visibility = View.VISIBLE
-            AgentRepository(this@MainActivity, AgentWebClient()).getAll()
+            /*AgentRepository(this@MainActivity, AgentWebClient()).getAll()*/
             setsUpTabLayout()
             binding.splashScreenLoading.visibility = View.GONE
 

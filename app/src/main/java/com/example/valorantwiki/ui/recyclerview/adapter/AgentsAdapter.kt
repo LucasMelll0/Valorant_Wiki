@@ -1,26 +1,35 @@
 package com.example.valorantwiki.ui.recyclerview.adapter
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.valorantwiki.databinding.AgentItemBinding
 import com.example.valorantwiki.model.Agent
-import com.example.valorantwiki.ui.activities.AgentActivity
 import com.example.valorantwiki.ui.activities.AGENT_UUID
+import com.example.valorantwiki.ui.activities.AgentActivity
 import com.example.valorantwiki.ui.activities.extensions.formatStrToColorStr
 import com.example.valorantwiki.ui.activities.extensions.goTo
 
 class AgentsAdapter(
     val context: Context,
-    agentsList: List<Agent> = emptyList()
-) : RecyclerView.Adapter<AgentsAdapter.AgentsViewHolder>() {
+) : ListAdapter<Agent, AgentsAdapter.AgentsViewHolder>(differCallBack) {
 
-    private val dataSet : MutableList<Agent> = agentsList.toMutableList()
+    companion object {
+        private val differCallBack = object : DiffUtil.ItemCallback<Agent>() {
+            override fun areItemsTheSame(oldItem: Agent, newItem: Agent): Boolean {
+                return oldItem.uuid == newItem.uuid
+            }
 
+            override fun areContentsTheSame(oldItem: Agent, newItem: Agent): Boolean {
+                return oldItem == newItem
+            }
+        }
+    }
 
     inner class AgentsViewHolder(private val binding: AgentItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
@@ -53,15 +62,6 @@ class AgentsAdapter(
     }
 
     override fun onBindViewHolder(holder: AgentsViewHolder, position: Int) {
-        holder.bindItem(dataSet[position])
-    }
-
-    override fun getItemCount(): Int = dataSet.size
-
-    @SuppressLint("NotifyDataSetChanged")
-    fun addAll(agents: List<Agent>){
-        dataSet.clear()
-        dataSet.addAll(agents)
-        notifyDataSetChanged()
+        holder.bindItem(getItem(position))
     }
 }

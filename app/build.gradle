@@ -4,12 +4,12 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.example.valorantwiki"
         minSdk 26
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -38,21 +38,29 @@ dependencies {
 
     def lifecycle_version = "2.5.1"
 
+
+    // asynchronous execution(coroutines)
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
 
-    //bibliotecas para execuções assincronas(coroutines)
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
-    implementation "io.coil-kt:coil:2.1.0"
+    // ViewModel && LiveData
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
 
-    //Bibliotecas para requisição
-    implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
+    // image loader
+    implementation "io.coil-kt:coil:2.2.2"
+
+    // api rest
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation "com.squareup.okhttp3:okhttp:4.10.0"
     implementation "com.squareup.okhttp3:logging-interceptor:4.10.0"
 
+    //json converter
+    implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
+
     implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.5.0'
-    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'com.google.android.material:material:1.7.0'
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

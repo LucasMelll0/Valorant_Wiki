@@ -1,9 +1,10 @@
 package com.example.valorantwiki.ui.recyclerview.adapter
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.valorantwiki.databinding.MapItemBinding
@@ -14,10 +15,21 @@ import com.example.valorantwiki.ui.activities.extensions.goTo
 
 class MapsAdapter(
     private val context: Context,
-    maps : List<Map> = emptyList()
-    ) : RecyclerView.Adapter<MapsAdapter.MapsViewHolder>() {
+    ) : ListAdapter<Map, MapsAdapter.MapsViewHolder>(differCallBack) {
 
-    private val dataSet: MutableList<Map> = maps.toMutableList()
+    companion object {
+        private val differCallBack = object :
+            DiffUtil.ItemCallback<Map>(){
+            override fun areItemsTheSame(oldItem: Map, newItem: Map): Boolean {
+                return oldItem.uuid == newItem.uuid
+            }
+
+            override fun areContentsTheSame(oldItem: Map, newItem: Map): Boolean {
+                return oldItem == newItem
+            }
+
+        }
+    }
 
     inner class MapsViewHolder(private val binding: MapItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
@@ -41,15 +53,7 @@ class MapsAdapter(
     }
 
     override fun onBindViewHolder(holder: MapsViewHolder, position: Int) {
-        holder.bindItem(dataSet[position])
+        holder.bindItem(getItem(position))
     }
 
-    override fun getItemCount(): Int = dataSet.size
-
-    @SuppressLint("NotifyDataSetChanged")
-    fun addAll(maps: List<Map>) {
-        dataSet.clear()
-        dataSet.addAll(maps)
-        notifyDataSetChanged()
-    }
 }
