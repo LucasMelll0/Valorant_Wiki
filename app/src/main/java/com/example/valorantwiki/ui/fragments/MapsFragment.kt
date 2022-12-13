@@ -63,19 +63,23 @@ class MapsFragment : Fragment() {
     }
 
     private fun loadMaps() {
-
-        binding.errorMessageMaps.visibility = View.GONE
-        binding.progressbarMapsFragment.visibility = View.VISIBLE
-        viewModel.mapsLiveData.observe(this) { maps ->
-            if (maps.isNotEmpty()) {
-                adapter.submitList(maps)
-            } else {
-                if (adapter.currentList.isEmpty()) {
-                    showErrorMessage()
+        lifecycleScope.launch {
+            binding.errorMessageMaps.visibility = View.GONE
+            binding.progressbarMapsFragment.visibility = View.VISIBLE
+            viewModel.getAll()
+            viewModel.mapsLiveData.value?.let {
+                viewModel.mapsLiveData.observe(this@MapsFragment) { maps ->
+                    if (maps.isNotEmpty()) {
+                        adapter.submitList(maps)
+                    } else {
+                        if (adapter.currentList.isEmpty()) {
+                            showErrorMessage()
+                        }
+                    }
                 }
-            }
+            } ?: showErrorMessage()
+            binding.progressbarMapsFragment.visibility = View.GONE
         }
-        binding.progressbarMapsFragment.visibility = View.GONE
     }
 
 

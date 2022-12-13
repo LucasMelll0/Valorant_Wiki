@@ -36,15 +36,9 @@ class AgentsFragment : Fragment() {
         setsUpBottomNavigation()
         setsUpRecyclerView()
         setsUpRefreshButton()
-        getAgents()
+        loadAgents()
     }
 
-    override fun onResume() {
-        super.onResume()
-        lifecycleScope.launch {
-            viewModel.getAll()
-        }
-    }
 
     private fun setsUpViewModel() {
         val application = requireActivity().application
@@ -59,23 +53,30 @@ class AgentsFragment : Fragment() {
 
     private fun setsUpRefreshButton() {
         binding.fabRefreshAgents.setOnClickListener {
-            getAgents()
+            loadAgents()
         }
     }
 
-    private fun getAgents() {
-        binding.errorMessageAgents.visibility = View.GONE
-        binding.progressbarAgentsFragment.visibility = View.VISIBLE
-        viewModel.agentsLiveData.observe(this) { agents ->
-            if (agents.isNotEmpty()) {
-                adapter.submitList(agents)
-            } else {
-                if (adapter.currentList.isEmpty()) {
-                    showErroMessage()
+    private fun loadAgents() {
+        lifecycleScope.launch {
+            binding.errorMessageAgents.visibility = View.GONE
+            binding.progressbarAgentsFragment.visibility = View.VISIBLE
+            viewModel.getAll()
+            viewModel.agentsLiveData.value?.let {
+                viewModel.agentsLiveData.observe(this@AgentsFragment) {
+                    if (it.isNotEmpty()) {
+                        val roleId = binding.bottomNavigation.selectedItemId
+                        val agents = viewModel.getForSelectedRole(roleId)
+                        adapter.submitList(agents)
+                    } else {
+                        if (adapter.currentList.isEmpty()) {
+                            showErroMessage()
+                        }
+                    }
                 }
-            }
+            } ?: showErroMessage()
+            binding.progressbarAgentsFragment.visibility = View.GONE
         }
-        binding.progressbarAgentsFragment.visibility = View.GONE
     }
 
     private fun showErroMessage() {
