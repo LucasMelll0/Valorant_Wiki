@@ -1,9 +1,8 @@
 package com.example.valorantwiki.ui.fragments
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -32,11 +31,56 @@ class AgentsFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
         setsUpViewModel()
         setsUpBottomNavigation()
         setsUpRecyclerView()
         setsUpRefreshButton()
         loadAgents()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.activity_main_menu, menu)
+    }
+
+    private fun setsUpSearchView(searchView: SearchView?) {
+        searchView?.let {
+            searchView.isSubmitButtonEnabled = false
+            searchView.setOnCloseListener {
+                loadAgents()
+                false
+            }
+            searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    return false
+                }
+
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    newText?.let {
+                        viewModel.agentsLiveData.value?.let { agents ->
+                            val filteredList = agents.filter { agent ->
+                                agent.name.startsWith(newText, true)
+                            }
+                            adapter.submitList(filteredList)
+                        }
+
+                    }
+                    return false
+                }
+
+            })
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_search -> {
+                val search = item.actionView as? SearchView
+                setsUpSearchView(search)
+                true
+            }
+            else -> false
+        }
     }
 
 

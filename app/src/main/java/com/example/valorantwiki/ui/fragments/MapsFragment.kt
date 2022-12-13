@@ -1,12 +1,12 @@
 package com.example.valorantwiki.ui.fragments
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import com.example.valorantwiki.R
 import com.example.valorantwiki.databinding.FragmentMapsBinding
 import com.example.valorantwiki.repository.MapRepository
 import com.example.valorantwiki.ui.recyclerview.adapter.MapsAdapter
@@ -32,10 +32,56 @@ class MapsFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
         setsUpViewModel()
         setsUpRecyclerView()
         setsUpRefreshButton()
         loadMaps()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.activity_main_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_search -> {
+                val search = item.actionView as? SearchView
+                setsUpSearchView(search)
+                true
+            }
+            else -> false
+        }
+    }
+
+    private fun setsUpSearchView(searchView: SearchView?) {
+        searchView?.let {
+            searchView.isSubmitButtonEnabled = false
+            searchView.setOnCloseListener {
+                loadMaps()
+                false
+            }
+            searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    return false
+                }
+
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    newText?.let {
+                        viewModel.mapsLiveData.value?.let { maps ->
+                            val filteredList = maps.filter { map ->
+                                map.name.startsWith(newText, true)
+                            }
+                            adapter.submitList(filteredList)
+                        }
+
+                    }
+                    return false
+                }
+
+            })
+        }
+
     }
 
     private fun setsUpViewModel() {

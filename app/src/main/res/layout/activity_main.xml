@@ -11,8 +11,7 @@
         android:id="@+id/splash_screen_loading"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"
-        tools:visibility="visible">
+        android:visibility="gone">
         <include
 
             layout="@layout/splash_screen"
@@ -25,6 +24,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             />
     </androidx.appcompat.widget.LinearLayoutCompat>
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_main_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white_valorant"
+        android:background="@color/white_valorant"
+        app:title="@null"
+        />
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"

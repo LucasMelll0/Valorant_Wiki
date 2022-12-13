@@ -27,9 +27,16 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        setsUpToolBar()
         setsUpViewModel()
         getAgentsForFirstInit()
 
+    }
+
+    private fun setsUpToolBar() {
+        val toolbar = binding.toolbarMainActivity
+        setSupportActionBar(toolbar)
+        supportActionBar?.title = null
     }
 
     private fun setsUpViewModel() {

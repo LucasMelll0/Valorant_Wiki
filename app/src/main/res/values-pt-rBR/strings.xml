@@ -20,4 +20,5 @@
     <string name="nao_tem_minimapa">Este mapa não tem minimapa!</string>
     <string name="algo_de_errado_aconteceu">Algo está errado!!</string>
     <string name="recarregar">Recarregar</string>
+    <string name="Pesquisar">Pesquisar</string>
 </resources>

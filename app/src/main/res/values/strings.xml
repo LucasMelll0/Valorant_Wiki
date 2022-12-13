@@ -19,4 +19,5 @@
     <string name="nao_tem_minimapa">This map  has no minimap!</string>
     <string name="algo_de_errado_aconteceu">Something has wrong!!</string>
     <string name="recarregar">Refresh</string>
+    <string name="Pesquisar">Search</string>
 </resources>
