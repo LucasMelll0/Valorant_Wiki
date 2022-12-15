@@ -25,7 +25,8 @@ class AgentListViewModel(
             val response = repository.getAll(language)
             if (response.status == 200) {
                 val agents = response.data.map { agent -> agent.agent }
-                agentsLiveData.postValue(agents)
+                val agentsSorted = agents.sortedBy { it.name }
+                agentsLiveData.postValue(agentsSorted)
             }
         }
     }

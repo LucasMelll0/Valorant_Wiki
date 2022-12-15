@@ -40,6 +40,7 @@ class MapsFragment : Fragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        menu.clear()
         inflater.inflate(R.menu.activity_main_menu, menu)
     }
 
@@ -78,10 +79,8 @@ class MapsFragment : Fragment() {
                     }
                     return false
                 }
-
             })
         }
-
     }
 
     private fun setsUpViewModel() {
@@ -95,12 +94,6 @@ class MapsFragment : Fragment() {
             ViewModelProvider(viewModelStore, viewModelFactory)[MapListViewModel::class.java]
     }
 
-    override fun onResume() {
-        super.onResume()
-        lifecycleScope.launch {
-            viewModel.getAll()
-        }
-    }
 
     private fun setsUpRefreshButton() {
         binding.fabRefreshMaps.setOnClickListener {

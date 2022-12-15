@@ -8,12 +8,16 @@ import androidx.lifecycle.lifecycleScope
 import com.example.valorantwiki.R
 import com.example.valorantwiki.databinding.ActivityMainBinding
 import com.example.valorantwiki.repository.AgentRepository
+import com.example.valorantwiki.repository.MapRepository
 import com.example.valorantwiki.ui.fragments.AgentsFragment
 import com.example.valorantwiki.ui.fragments.MapsFragment
 import com.example.valorantwiki.ui.viewPager.ViewPagerAdapter
 import com.example.valorantwiki.viewmodel.agentlistviewmodel.AgentListViewModel
 import com.example.valorantwiki.viewmodel.agentlistviewmodel.AgentListViewModelFactory
+import com.example.valorantwiki.viewmodel.maplistviewmodel.MapListViewModel
+import com.example.valorantwiki.viewmodel.maplistviewmodel.MapListViewModelFactory
 import com.example.valorantwiki.webclient.AgentWebClient
+import com.example.valorantwiki.webclient.MapWebClient
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.coroutines.launch
@@ -22,14 +26,15 @@ import kotlinx.coroutines.launch
 class MainActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
-    private lateinit var viewModel: AgentListViewModel
+    private lateinit var agentListViewModel: AgentListViewModel
+    private lateinit var mapListViewModel: MapListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         setsUpToolBar()
         setsUpViewModel()
-        getAgentsForFirstInit()
+        getData()
 
     }
 
@@ -40,18 +45,23 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setsUpViewModel() {
-        val webClient = AgentWebClient()
-        val viewModelFactory = AgentListViewModelFactory(
+        val agentListViewModelFactory = AgentListViewModelFactory(
             application,
-            AgentRepository(webClient)
+            AgentRepository(AgentWebClient())
         )
-        viewModel = ViewModelProvider(this, viewModelFactory)[AgentListViewModel::class.java]
+        val mapListViewModelFactory = MapListViewModelFactory(
+            application,
+            MapRepository(MapWebClient())
+        )
+        agentListViewModel = ViewModelProvider(this, agentListViewModelFactory)[AgentListViewModel::class.java]
+        mapListViewModel = ViewModelProvider(this, mapListViewModelFactory)[MapListViewModel::class.java]
     }
 
-    private fun getAgentsForFirstInit() {
+    private fun getData() {
         lifecycleScope.launch {
             binding.splashScreenLoading.visibility = View.VISIBLE
-            viewModel.getAll()
+            agentListViewModel.getAll()
+            mapListViewModel.getAll()
             setsUpTabLayout()
             binding.splashScreenLoading.visibility = View.GONE
 

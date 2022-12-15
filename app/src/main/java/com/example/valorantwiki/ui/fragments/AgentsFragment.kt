@@ -1,6 +1,7 @@
 package com.example.valorantwiki.ui.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
@@ -40,6 +41,7 @@ class AgentsFragment : Fragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        menu.clear()
         inflater.inflate(R.menu.activity_main_menu, menu)
     }
 
@@ -57,14 +59,18 @@ class AgentsFragment : Fragment() {
 
                 override fun onQueryTextChange(newText: String?): Boolean {
                     newText?.let {
-                        viewModel.agentsLiveData.value?.let { agents ->
-                            val filteredList = agents.filter { agent ->
-                                agent.name.startsWith(newText, true)
+                        if (newText.isNotEmpty()) {
+                            viewModel.agentsLiveData.value?.let { agents ->
+                                val filteredList = agents.filter { agent ->
+                                    agent.name.startsWith(newText, true)
+                                }
+                                adapter.submitList(filteredList)
                             }
-                            adapter.submitList(filteredList)
+                        }else{
+                            loadAgents()
                         }
 
-                    }
+                    } ?: loadAgents()
                     return false
                 }
 
@@ -107,10 +113,14 @@ class AgentsFragment : Fragment() {
             binding.progressbarAgentsFragment.visibility = View.VISIBLE
             viewModel.getAll()
             viewModel.agentsLiveData.value?.let {
+                Log.i("Test", "loadAgents: True")
+                var roleId = binding.bottomNavigation.selectedItemId
+                var agents = viewModel.getForSelectedRole(roleId)
+                adapter.submitList(agents)
                 viewModel.agentsLiveData.observe(this@AgentsFragment) {
                     if (it.isNotEmpty()) {
-                        val roleId = binding.bottomNavigation.selectedItemId
-                        val agents = viewModel.getForSelectedRole(roleId)
+                        roleId = binding.bottomNavigation.selectedItemId
+                        agents = viewModel.getForSelectedRole(roleId)
                         adapter.submitList(agents)
                     } else {
                         if (adapter.currentList.isEmpty()) {

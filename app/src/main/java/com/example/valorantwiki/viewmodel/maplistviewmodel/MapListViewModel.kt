@@ -11,7 +11,12 @@ class MapListViewModel(application: Application, private val repository: MapRepo
 
     private val language = application.getString(R.string.linguagem)
 
-    internal val mapsLiveData = MutableLiveData<List<com.example.valorantwiki.model.Map>>()
+
+    companion object {
+        private val mapsLiveDataCompanion = MutableLiveData<List<com.example.valorantwiki.model.Map>>()
+    }
+
+    internal val mapsLiveData = mapsLiveDataCompanion
 
     suspend fun getAll() {
         mapsLiveData.value ?: run {
@@ -20,7 +25,7 @@ class MapListViewModel(application: Application, private val repository: MapRepo
                 val maps = response.data.map { map ->
                     map.map
                 }
-                mapsLiveData.postValue(maps)
+                mapsLiveDataCompanion.postValue(maps)
 
             }
         }
