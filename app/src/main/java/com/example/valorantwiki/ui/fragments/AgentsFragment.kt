@@ -16,7 +16,6 @@ import com.example.valorantwiki.viewmodel.agentlistviewmodel.AgentListViewModelF
 import com.example.valorantwiki.webclient.AgentWebClient
 import kotlinx.coroutines.launch
 
-
 class AgentsFragment : Fragment() {
 
     private val binding by lazy { FragmentAgentsBinding.inflate(layoutInflater) }
@@ -66,7 +65,7 @@ class AgentsFragment : Fragment() {
                                 }
                                 adapter.submitList(filteredList)
                             }
-                        }else{
+                        } else {
                             loadAgents()
                         }
 
@@ -145,73 +144,43 @@ class AgentsFragment : Fragment() {
         binding.bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.page_all -> {
-                    viewModel.agentsLiveData.observe(this) { agents ->
-                        if (agents.isNotEmpty()) {
-                            adapter.submitList(agents)
-                        } else {
-                            if (adapter.currentList.isEmpty()) {
-                                showErroMessage()
-                            }
-                        }
-                    }
+                    applyFilterByRoleId(item.itemId)
                     true
                 }
                 R.id.page_initiator -> {
-                    viewModel.agentsLiveData.observe(this) {
-                        val agents = viewModel.getInitiators()
-                        if (agents.isNotEmpty()) {
-                            adapter.submitList(agents)
-                        } else {
-                            if (adapter.currentList.isEmpty()) {
-                                showErroMessage()
-                            }
-                        }
-                    }
-
+                    applyFilterByRoleId(item.itemId)
                     true
                 }
                 R.id.page_controller -> {
-                    viewModel.agentsLiveData.observe(this) {
-                        val agents = viewModel.getControlers()
-                        if (agents.isNotEmpty()) {
-                            adapter.submitList(agents)
-                        } else {
-                            if (adapter.currentList.isEmpty()) {
-                                showErroMessage()
-                            }
-                        }
-                    }
+                    applyFilterByRoleId(item.itemId)
                     true
                 }
                 R.id.page_sentinel -> {
-                    viewModel.agentsLiveData.observe(this) {
-                        val agents = viewModel.getSentinels()
-                        if (agents.isNotEmpty()) {
-                            adapter.submitList(agents)
-                        } else {
-                            if (adapter.currentList.isEmpty()) {
-                                showErroMessage()
-                            }
-                        }
-                    }
+                    applyFilterByRoleId(item.itemId)
                     true
                 }
                 R.id.page_duelist -> {
-                    viewModel.agentsLiveData.observe(this) {
-                        val agents = viewModel.getDuelists()
-                        if (agents.isNotEmpty()) {
-                            adapter.submitList(agents)
-                        } else {
-                            if (adapter.currentList.isEmpty()) {
-                                showErroMessage()
-                            }
-                        }
-                    }
+                    applyFilterByRoleId(item.itemId)
                     true
                 }
                 else -> false
             }
         }
+    }
+
+    private fun applyFilterByRoleId(roleId: Int) {
+        viewModel.agentsLiveData.value?.let {
+            viewModel.agentsLiveData.observe(this) {
+                val agents = viewModel.getForSelectedRole(roleId)
+                if (agents.isNotEmpty()) {
+                    adapter.submitList(agents)
+                } else {
+                    if (adapter.currentList.isEmpty()) {
+                        showErroMessage()
+                    }
+                }
+            }
+        } ?: showErroMessage()
     }
 
 
