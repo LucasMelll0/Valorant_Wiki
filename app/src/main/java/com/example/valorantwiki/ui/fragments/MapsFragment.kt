@@ -4,23 +4,21 @@ import android.os.Bundle
 import android.view.*
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.valorantwiki.R
 import com.example.valorantwiki.databinding.FragmentMapsBinding
-import com.example.valorantwiki.repository.MapRepository
 import com.example.valorantwiki.ui.recyclerview.adapter.MapsAdapter
 import com.example.valorantwiki.viewmodel.maplistviewmodel.MapListViewModel
-import com.example.valorantwiki.viewmodel.maplistviewmodel.MapListViewModelFactory
-import com.example.valorantwiki.webclient.MapWebClient
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class MapsFragment : Fragment() {
 
     private val binding by lazy { FragmentMapsBinding.inflate(layoutInflater) }
-    private lateinit var viewModel: MapListViewModel
-    private val adapter by lazy { MapsAdapter(requireContext()) }
+    private val viewModel: MapListViewModel by viewModel()
+    private val adapter: MapsAdapter by inject()
 
 
     override fun onCreateView(
@@ -33,17 +31,18 @@ class MapsFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
-        setsUpViewModel()
         setsUpRecyclerView()
         setsUpRefreshButton()
         loadMaps()
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         menu.clear()
         inflater.inflate(R.menu.activity_main_menu, menu)
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_search -> {
@@ -82,18 +81,6 @@ class MapsFragment : Fragment() {
             })
         }
     }
-
-    private fun setsUpViewModel() {
-        val application = requireActivity().application
-        val mapWebClient = MapWebClient()
-        val viewModelFactory = MapListViewModelFactory(
-            application,
-            MapRepository(mapWebClient)
-        )
-        viewModel =
-            ViewModelProvider(viewModelStore, viewModelFactory)[MapListViewModel::class.java]
-    }
-
 
     private fun setsUpRefreshButton() {
         binding.fabRefreshMaps.setOnClickListener {

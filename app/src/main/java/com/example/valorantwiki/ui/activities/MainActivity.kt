@@ -3,37 +3,30 @@ package com.example.valorantwiki.ui.activities
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.valorantwiki.R
 import com.example.valorantwiki.databinding.ActivityMainBinding
-import com.example.valorantwiki.repository.AgentRepository
-import com.example.valorantwiki.repository.MapRepository
 import com.example.valorantwiki.ui.fragments.AgentsFragment
 import com.example.valorantwiki.ui.fragments.MapsFragment
 import com.example.valorantwiki.ui.viewPager.ViewPagerAdapter
 import com.example.valorantwiki.viewmodel.agentlistviewmodel.AgentListViewModel
-import com.example.valorantwiki.viewmodel.agentlistviewmodel.AgentListViewModelFactory
 import com.example.valorantwiki.viewmodel.maplistviewmodel.MapListViewModel
-import com.example.valorantwiki.viewmodel.maplistviewmodel.MapListViewModelFactory
-import com.example.valorantwiki.webclient.AgentWebClient
-import com.example.valorantwiki.webclient.MapWebClient
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class MainActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
-    private lateinit var agentListViewModel: AgentListViewModel
-    private lateinit var mapListViewModel: MapListViewModel
+    private val agentListViewModel: AgentListViewModel by viewModel()
+    private val mapListViewModel: MapListViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         setsUpToolBar()
-        setsUpViewModel()
         getData()
 
     }
@@ -44,18 +37,6 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.title = null
     }
 
-    private fun setsUpViewModel() {
-        val agentListViewModelFactory = AgentListViewModelFactory(
-            application,
-            AgentRepository(AgentWebClient())
-        )
-        val mapListViewModelFactory = MapListViewModelFactory(
-            application,
-            MapRepository(MapWebClient())
-        )
-        agentListViewModel = ViewModelProvider(this, agentListViewModelFactory)[AgentListViewModel::class.java]
-        mapListViewModel = ViewModelProvider(this, mapListViewModelFactory)[MapListViewModel::class.java]
-    }
 
     private fun getData() {
         lifecycleScope.launch {

@@ -1,6 +1,7 @@
 package com.example.valorantwiki.ui.recyclerview.adapter
 
 import android.content.Context
+import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -48,6 +49,7 @@ class AgentsAdapter(
         private fun setsUpClick(uuid: String) {
             itemView.setOnClickListener {
                 context.goTo(AgentActivity::class.java){
+                    flags = FLAG_ACTIVITY_NEW_TASK
                     putExtra(AGENT_UUID, uuid)
                 }
             }

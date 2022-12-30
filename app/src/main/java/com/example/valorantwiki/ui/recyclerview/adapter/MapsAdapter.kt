@@ -1,6 +1,7 @@
 package com.example.valorantwiki.ui.recyclerview.adapter
 
 import android.content.Context
+import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -40,6 +41,7 @@ class MapsAdapter(
             }
             itemView.setOnClickListener {
                 context.goTo(MapActivity::class.java){
+                    flags = FLAG_ACTIVITY_NEW_TASK
                     putExtra(MAP_UUID, map.uuid)
                 }
             }

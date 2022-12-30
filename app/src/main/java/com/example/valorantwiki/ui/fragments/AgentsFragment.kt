@@ -5,22 +5,24 @@ import android.util.Log
 import android.view.*
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.valorantwiki.R
 import com.example.valorantwiki.databinding.FragmentAgentsBinding
-import com.example.valorantwiki.repository.AgentRepository
 import com.example.valorantwiki.ui.recyclerview.adapter.AgentsAdapter
 import com.example.valorantwiki.viewmodel.agentlistviewmodel.AgentListViewModel
-import com.example.valorantwiki.viewmodel.agentlistviewmodel.AgentListViewModelFactory
-import com.example.valorantwiki.webclient.AgentWebClient
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AgentsFragment : Fragment() {
 
-    private val binding by lazy { FragmentAgentsBinding.inflate(layoutInflater) }
-    private val adapter by lazy { AgentsAdapter(requireContext()) }
-    private lateinit var viewModel: AgentListViewModel
+    private val binding: FragmentAgentsBinding by lazy {
+        FragmentAgentsBinding.inflate(
+            layoutInflater
+        )
+    }
+    private val adapter: AgentsAdapter by inject()
+    private val viewModel: AgentListViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,13 +34,13 @@ class AgentsFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
-        setsUpViewModel()
         setsUpBottomNavigation()
         setsUpRecyclerView()
         setsUpRefreshButton()
         loadAgents()
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         menu.clear()
         inflater.inflate(R.menu.activity_main_menu, menu)
@@ -77,6 +79,7 @@ class AgentsFragment : Fragment() {
         }
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_search -> {
@@ -88,17 +91,6 @@ class AgentsFragment : Fragment() {
         }
     }
 
-
-    private fun setsUpViewModel() {
-        val application = requireActivity().application
-        val agentWebClient = AgentWebClient()
-        val viewModelFactory = AgentListViewModelFactory(
-            application,
-            AgentRepository(agentWebClient)
-        )
-        viewModel =
-            ViewModelProvider(viewModelStore, viewModelFactory)[AgentListViewModel::class.java]
-    }
 
     private fun setsUpRefreshButton() {
         binding.fabRefreshAgents.setOnClickListener {

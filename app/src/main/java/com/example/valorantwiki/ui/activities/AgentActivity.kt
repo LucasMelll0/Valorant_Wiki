@@ -4,41 +4,27 @@ import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import coil.load
 import com.example.valorantwiki.databinding.ActivityAgentBinding
 import com.example.valorantwiki.model.Agent
-import com.example.valorantwiki.repository.AgentRepository
 import com.example.valorantwiki.ui.activities.extensions.formatStrToColorStr
 import com.example.valorantwiki.ui.dialogs.AbilityDialog
 import com.example.valorantwiki.ui.recyclerview.adapter.AbilitiesAdapter
 import com.example.valorantwiki.viewmodel.agentviewmodel.AgentViewModel
-import com.example.valorantwiki.viewmodel.agentviewmodel.AgentViewModelFactory
-import com.example.valorantwiki.webclient.AgentWebClient
 import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AgentActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivityAgentBinding.inflate(layoutInflater) }
-    private lateinit var viewmodel: AgentViewModel
+    private val viewmodel: AgentViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        setsUpViewModel()
         tryToGetAgent()
         setsUpButtonBack()
-    }
-
-    private fun setsUpViewModel() {
-        val agentWebClient = AgentWebClient()
-        val viewModelFactory = AgentViewModelFactory(
-            application,
-            AgentRepository(agentWebClient)
-        )
-        viewmodel =
-            ViewModelProvider(this, viewModelFactory)[AgentViewModel::class.java]
     }
 
     private fun setsUpButtonBack() {

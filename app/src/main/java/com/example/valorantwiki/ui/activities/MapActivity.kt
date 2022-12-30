@@ -3,40 +3,27 @@ package com.example.valorantwiki.ui.activities
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import coil.load
 import com.example.valorantwiki.R
 import com.example.valorantwiki.databinding.ActivityMapBinding
 import com.example.valorantwiki.model.Map
-import com.example.valorantwiki.repository.MapRepository
 import com.example.valorantwiki.ui.recyclerview.adapter.PlacesAdapter
 import com.example.valorantwiki.viewmodel.mapviewmodel.MapViewModel
-import com.example.valorantwiki.viewmodel.mapviewmodel.MapViewModelFactory
-import com.example.valorantwiki.webclient.MapWebClient
 import com.example.valorantwiki.webclient.webClientModel.Place
 import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MapActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivityMapBinding.inflate(layoutInflater) }
-    private lateinit var viewmodel: MapViewModel
+    private val viewmodel: MapViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        setsUpViewModel()
         tryToGetMap()
         setsUpbackButton()
-    }
-
-    private fun setsUpViewModel() {
-        val mapWebClient = MapWebClient()
-        val viewModelFactory = MapViewModelFactory(
-            application,
-            MapRepository(mapWebClient)
-        )
-        viewmodel = ViewModelProvider(this, viewModelFactory)[MapViewModel::class.java]
     }
 
     private fun setsUpbackButton() {
