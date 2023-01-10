@@ -8,6 +8,7 @@ data class Agent(
     val name: String,
     val description: String,
     val image: String,
+    val background: String,
     val backgrondColor: String,
     val role: Role,
     val abilities: List<Ability>

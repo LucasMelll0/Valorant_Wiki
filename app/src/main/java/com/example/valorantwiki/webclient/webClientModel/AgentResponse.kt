@@ -16,6 +16,7 @@ data class AgentResponseClass(
     private val displayName: String?,
     private val description: String?,
     private val fullPortrait: String?,
+    private val background: String?,
     private val backgroundGradientColors: List<String>?,
     private val role: Role?,
     private val abilities: List<Ability>?
@@ -27,6 +28,7 @@ data class AgentResponseClass(
             name = this.displayName ?: "",
             description = this.description ?: "",
             image = this.fullPortrait ?: "",
+            background = this.background ?: "",
             backgrondColor = this.backgroundGradientColors?.get(1) ?: "",
             role = this.role ?: Role(
                 "",

@@ -53,6 +53,7 @@ class AgentActivity : AppCompatActivity() {
             val backgroundColorFormated = agent.backgrondColor.formatStrToColorStr()
             cardviewToolbarAgentActivity.setCardBackgroundColor(Color.parseColor("#${backgroundColorFormated}"))
             window.statusBarColor = Color.parseColor("#${backgroundColorFormated}")
+            imageviewBackgroundAgentActivity.load(agent.background)
             imageviewPortraitAgentActivity.load(agent.image)
             textviewNameAgentActivity.text = agent.name
             textviewClassAgentActivity.text = agent.role.displayName
