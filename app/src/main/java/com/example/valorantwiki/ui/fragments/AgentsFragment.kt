@@ -4,7 +4,10 @@ import android.os.Bundle
 import android.util.Log
 import android.view.*
 import androidx.appcompat.widget.SearchView
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import com.example.valorantwiki.R
 import com.example.valorantwiki.databinding.FragmentAgentsBinding
@@ -33,17 +36,39 @@ class AgentsFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
         setsUpBottomNavigation()
         setsUpRecyclerView()
         setsUpRefreshButton()
         loadAgents()
     }
 
-    @Deprecated("Deprecated in Java")
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        menu.clear()
-        inflater.inflate(R.menu.activity_main_menu, menu)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setsUpMenuProvider()
+    }
+
+    private fun setsUpMenuProvider() {
+        activity?.let {
+            val menuHost: MenuHost = it
+            menuHost.invalidateMenu()
+            menuHost.addMenuProvider(object : MenuProvider {
+                override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                    menuInflater.inflate(R.menu.activity_main_menu, menu)
+                }
+
+                override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                    return when(menuItem.itemId){
+                        R.id.action_search -> {
+                            Log.i("Test", "onMenuItemSelected: Entrou")
+                            val search = menuItem.actionView as? SearchView
+                            setsUpSearchView(search)
+                            true
+                        }
+                        else -> false
+                    }
+                }
+            }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+        }
     }
 
     private fun setsUpSearchView(searchView: SearchView?) {
@@ -61,12 +86,10 @@ class AgentsFragment : Fragment() {
                 override fun onQueryTextChange(newText: String?): Boolean {
                     newText?.let {
                         if (newText.isNotEmpty()) {
-                            viewModel.agentsLiveData.value?.let { agents ->
-                                val filteredList = agents.filter { agent ->
-                                    agent.name.startsWith(newText, true)
-                                }
-                                adapter.submitList(filteredList)
-                            }
+                            val filteredList = viewModel.searchByName(newText)
+                            Log.i("Test", "onQueryTextChange: $filteredList")
+                            adapter.submitList(filteredList)
+
                         } else {
                             loadAgents()
                         }
@@ -79,19 +102,6 @@ class AgentsFragment : Fragment() {
         }
     }
 
-    @Deprecated("Deprecated in Java")
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.action_search -> {
-                val search = item.actionView as? SearchView
-                setsUpSearchView(search)
-                true
-            }
-            else -> false
-        }
-    }
-
-
     private fun setsUpRefreshButton() {
         binding.fabRefreshAgents.setOnClickListener {
             loadAgents()
@@ -100,32 +110,34 @@ class AgentsFragment : Fragment() {
 
     private fun loadAgents() {
         lifecycleScope.launch {
-            binding.errorMessageAgents.visibility = View.GONE
-            binding.progressbarAgentsFragment.visibility = View.VISIBLE
-            viewModel.getAll()
-            viewModel.agentsLiveData.value?.let {
-                Log.i("Test", "loadAgents: True")
-                var roleId = binding.bottomNavigation.selectedItemId
-                var agents = viewModel.getForSelectedRole(roleId)
-                adapter.submitList(agents)
-                viewModel.agentsLiveData.observe(this@AgentsFragment) {
-                    if (it.isNotEmpty()) {
-                        roleId = binding.bottomNavigation.selectedItemId
-                        agents = viewModel.getForSelectedRole(roleId)
-                        adapter.submitList(agents)
-                    } else {
-                        if (adapter.currentList.isEmpty()) {
-                            showErroMessage()
-                        }
+            errorMessage(false)
+            progressBar(true)
+            val language = getString(R.string.linguagem)
+            viewModel.getAll(language)
+            var roleName = viewModel.getAgentRoleFilter()
+            var agents = viewModel.getByRoleName(roleName)
+            adapter.submitList(agents)
+            viewModel.agentsLiveData.observe(this@AgentsFragment) {
+                progressBar(false)
+                if (it.isNotEmpty()) {
+                    roleName = viewModel.getAgentRoleFilter()
+                    agents = viewModel.getByRoleName(roleName)
+                    adapter.submitList(agents)
+                } else {
+                    if (adapter.currentList.isEmpty()) {
+                        errorMessage(true)
                     }
                 }
-            } ?: showErroMessage()
-            binding.progressbarAgentsFragment.visibility = View.GONE
+            }
         }
     }
 
-    private fun showErroMessage() {
-        binding.errorMessageAgents.visibility = View.VISIBLE
+    private fun progressBar(visible: Boolean) {
+        binding.progressbarAgentsFragment.visibility = if (visible) View.VISIBLE else View.GONE
+    }
+
+    private fun errorMessage(visible: Boolean) {
+        binding.errorMessageAgents.visibility = if (visible) View.VISIBLE else View.GONE
     }
 
     private fun setsUpRecyclerView() {
@@ -136,23 +148,32 @@ class AgentsFragment : Fragment() {
         binding.bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.page_all -> {
-                    applyFilterByRoleId(item.itemId)
+                    viewModel.setAgentRoleFilter(null)
+                    applyFilterByRoleId(null)
                     true
                 }
                 R.id.page_initiator -> {
-                    applyFilterByRoleId(item.itemId)
+                    val role = getString(R.string.iniciador)
+                    viewModel.setAgentRoleFilter(role)
+                    applyFilterByRoleId(role)
                     true
                 }
                 R.id.page_controller -> {
-                    applyFilterByRoleId(item.itemId)
+                    val role = getString(R.string.controlador)
+                    viewModel.setAgentRoleFilter(role)
+                    applyFilterByRoleId(role)
                     true
                 }
                 R.id.page_sentinel -> {
-                    applyFilterByRoleId(item.itemId)
+                    val role = getString(R.string.sentinela)
+                    viewModel.setAgentRoleFilter(role)
+                    applyFilterByRoleId(role)
                     true
                 }
                 R.id.page_duelist -> {
-                    applyFilterByRoleId(item.itemId)
+                    val role = getString(R.string.duelista)
+                    viewModel.setAgentRoleFilter(role)
+                    applyFilterByRoleId(role)
                     true
                 }
                 else -> false
@@ -160,20 +181,18 @@ class AgentsFragment : Fragment() {
         }
     }
 
-    private fun applyFilterByRoleId(roleId: Int) {
-        viewModel.agentsLiveData.value?.let {
-            viewModel.agentsLiveData.observe(this) {
-                val agents = viewModel.getForSelectedRole(roleId)
-                if (agents.isNotEmpty()) {
-                    adapter.submitList(agents)
-                } else {
-                    if (adapter.currentList.isEmpty()) {
-                        showErroMessage()
-                    }
+    private fun applyFilterByRoleId(roleName: String?) {
+        viewModel.agentsLiveData.observe(this) {
+            val agents = viewModel.getByRoleName(roleName)
+            if (agents.isNotEmpty()) {
+                adapter.submitList(agents)
+                errorMessage(false)
+            } else {
+                if (adapter.currentList.isEmpty()) {
+                    errorMessage(true)
                 }
             }
-        } ?: showErroMessage()
+        }
+
     }
-
-
 }

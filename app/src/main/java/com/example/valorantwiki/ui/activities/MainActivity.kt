@@ -34,14 +34,14 @@ class MainActivity : AppCompatActivity() {
     private fun setsUpToolBar() {
         val toolbar = binding.toolbarMainActivity
         setSupportActionBar(toolbar)
-        supportActionBar?.title = null
     }
 
 
     private fun getData() {
         lifecycleScope.launch {
             binding.splashScreenLoading.visibility = View.VISIBLE
-            agentListViewModel.getAll()
+            val language = getString(R.string.linguagem)
+            agentListViewModel.getAll(language)
             mapListViewModel.getAll()
             setsUpTabLayout()
             binding.splashScreenLoading.visibility = View.GONE

@@ -1,3 +1,4 @@
 package com.example.valorantwiki.webclient
 
-const val TAG = "Testes Requisição Web API"
+const val TAG = "Requisição Web API"
+const val SUCCESS_CODE = 200

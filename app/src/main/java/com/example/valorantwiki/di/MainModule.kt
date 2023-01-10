@@ -20,7 +20,7 @@ val mainModule = module {
     }
 
     viewModel {
-        AgentListViewModel(androidApplication(), get())
+        AgentListViewModel(get())
     }
 
     viewModel {

@@ -1,6 +1,7 @@
 package com.example.valorantwiki.viewmodel.maplistviewmodel
 
 import android.app.Application
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.valorantwiki.R
@@ -16,7 +17,7 @@ class MapListViewModel(application: Application, private val repository: MapRepo
         private val mapsLiveDataCompanion = MutableLiveData<List<com.example.valorantwiki.model.Map>>()
     }
 
-    internal val mapsLiveData = mapsLiveDataCompanion
+    internal val mapsLiveData: LiveData<List<com.example.valorantwiki.model.Map>> = mapsLiveDataCompanion
 
     suspend fun getAll() {
         mapsLiveData.value ?: run {
