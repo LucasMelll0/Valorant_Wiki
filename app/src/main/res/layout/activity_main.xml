@@ -31,6 +31,7 @@
         android:backgroundTint="@color/white_valorant"
         android:background="@color/white_valorant"
         app:title="@null"
+        app:titleTextColor="@color/red_valorant"
         />
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"

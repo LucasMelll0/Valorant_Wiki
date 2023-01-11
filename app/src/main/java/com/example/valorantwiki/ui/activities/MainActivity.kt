@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
     private fun setsUpToolBar() {
         val toolbar = binding.toolbarMainActivity
         setSupportActionBar(toolbar)
+        supportActionBar?.title = null
     }
 
 
