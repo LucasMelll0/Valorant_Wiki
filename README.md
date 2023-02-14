@@ -45,7 +45,7 @@
   - [Moshi](https://github.com/square/moshi): Para conversão json -> classe kotlin.
 
 ## Arquitetura
-**LiveList** utiliza a arquitetura MVVM e o padrão de Repositories, que segue as [recomendações oficiais do Google](https://developer.android.com/topic/architecture).
+**Valorant Wiki** utiliza a arquitetura MVVM e o padrão de Repositories, que segue as [recomendações oficiais do Google](https://developer.android.com/topic/architecture).
 </br></br>
 <img width="60%" src="screenshots/arquitetura.png"/>
 <br>
