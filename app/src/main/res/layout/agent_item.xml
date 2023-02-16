@@ -9,13 +9,15 @@
         android:layout_width="match_parent"
         android:layout_height="515dp"
         android:layout_margin="16dp"
-        android:background="@color/white_valorant"
+        app:cardBackgroundColor="@color/white_valorant"
+        app:strokeColor="@color/white"
         app:cardCornerRadius="24dp"
         app:cardElevation="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

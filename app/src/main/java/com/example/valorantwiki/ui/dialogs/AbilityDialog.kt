@@ -11,6 +11,9 @@ import com.example.valorantwiki.webclient.webClientModel.Ability
 
 class AbilityDialog(private val ability: Ability) : DialogFragment() {
 
+    companion object {
+        const val TAG = "Ability Dialog"
+    }
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity?.let {
             val builder = AlertDialog.Builder(it)
@@ -19,6 +22,7 @@ class AbilityDialog(private val ability: Ability) : DialogFragment() {
             setsUpView(view)
             builder.setView(view)
             builder.create()
+
         } ?: throw IllegalStateException("Activity não pode ser nula")
 
     }
@@ -30,4 +34,5 @@ class AbilityDialog(private val ability: Ability) : DialogFragment() {
         abilityName.text = ability.displayName
         abilituDescription.text = ability.description
     }
+
 }

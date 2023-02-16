@@ -34,7 +34,6 @@ class MapsFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        /*setHasOptionsMenu(true)*/
         setsUpRecyclerView()
         setsUpRefreshButton()
         loadMaps()
@@ -68,24 +67,6 @@ class MapsFragment : Fragment() {
             }, viewLifecycleOwner, Lifecycle.State.RESUMED)
         }
     }
-
-    /*@Deprecated("Deprecated in Java")
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        menu.clear()
-        inflater.inflate(R.menu.activity_main_menu, menu)
-    }
-
-    @Deprecated("Deprecated in Java")
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.action_search -> {
-                val search = item.actionView as? SearchView
-                setsUpSearchView(search)
-                true
-            }
-            else -> false
-        }
-    }*/
 
     private fun setsUpSearchView(searchView: SearchView?) {
         searchView?.let {

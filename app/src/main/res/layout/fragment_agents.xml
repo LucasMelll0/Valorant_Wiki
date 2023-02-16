@@ -79,6 +79,8 @@
             android:background="@color/white_valorant"
             app:itemIconTint="@color/red_valorant"
             app:itemIconSize="35dp"
+            app:itemTextColor="@color/red_valorant"
+            app:itemBackground="@android:color/transparent"
             app:elevation="@dimen/cardview_default_elevation"
             app:layout_constraintBottom_toBottomOf="parent"/>
 

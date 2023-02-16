@@ -21,7 +21,9 @@
             android:exported="false" />
         <activity
             android:name=".ui.activities.AgentActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:configChanges="orientation"
+            />
         <activity
             android:name=".ui.activities.MainActivity"
             android:exported="true">

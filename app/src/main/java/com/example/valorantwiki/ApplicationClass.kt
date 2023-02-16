@@ -16,13 +16,11 @@ class ApplicationClass : Application() {
             androidContext(this@ApplicationClass)
 
             modules(
-                listOf(
                     mainModule,
                     agentsFragmentModule,
                     mapsFragmentModule,
                     agentActivityModule,
                     mapActivityModule
-                )
             )
         }
     }

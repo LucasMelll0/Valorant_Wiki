@@ -37,7 +37,7 @@ class AgentsAdapter(
         fun bindItem(agent: Agent) {
             binding.apply {
                 val backgroundColor = agent.backgrondColor.formatStrToColorStr()
-                cardviewAgentItem.setBackgroundColor(Color.parseColor("#$backgroundColor"))
+                cardviewAgentItem.setCardBackgroundColor(Color.parseColor("#$backgroundColor"))
                 iamgeviewBackgroundAgentItem.load(agent.background)
                 imageviewAgentItem.load(agent.image)
                 textviewAgentItemName.text = agent.name

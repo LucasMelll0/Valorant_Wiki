@@ -18,7 +18,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class AgentActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivityAgentBinding.inflate(layoutInflater) }
-    private val viewmodel: AgentViewModel by viewModel()
+    private val viewModel: AgentViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,8 +37,8 @@ class AgentActivity : AppCompatActivity() {
         lifecycleScope.launch {
             intent.extras?.getString(AGENT_UUID)?.let { uuid ->
                 binding.progressbarAgentActivity.visibility = View.VISIBLE
-                viewmodel.getById(uuid)
-                viewmodel.agentLiveData.observe(this@AgentActivity) { agent ->
+                viewModel.getById(uuid)
+                viewModel.agentLiveData.observe(this@AgentActivity) { agent ->
                     fillFields(agent)
                 }
                 binding.progressbarAgentActivity.visibility = View.GONE
@@ -50,29 +50,31 @@ class AgentActivity : AppCompatActivity() {
 
     private fun fillFields(agent: Agent) {
         binding.apply {
-            val backgroundColorFormated = agent.backgrondColor.formatStrToColorStr()
-            cardviewToolbarAgentActivity.setCardBackgroundColor(Color.parseColor("#${backgroundColorFormated}"))
-            window.statusBarColor = Color.parseColor("#${backgroundColorFormated}")
+            val backgroundColorFormatted = agent.backgrondColor.formatStrToColorStr()
+            cardviewToolbarAgentActivity.setCardBackgroundColor(Color.parseColor("#${backgroundColorFormatted}"))
+            window.statusBarColor = Color.parseColor("#${backgroundColorFormatted}")
             imageviewBackgroundAgentActivity.load(agent.background)
             imageviewPortraitAgentActivity.load(agent.image)
             textviewNameAgentActivity.text = agent.name
             textviewClassAgentActivity.text = agent.role.displayName
             textviewClassDescriptionAgentActivity.text = agent.role.description
             textviewAgentDescriptionAgentActivity.text = agent.description
-            setsUpAbilitiesList(backgroundColorFormated, agent)
+            setsUpAbilitiesList(backgroundColorFormatted, agent)
         }
     }
 
     private fun setsUpAbilitiesList(
-        backgroundColorFormated: String,
+        backgroundColorFormatted: String,
         agent: Agent
     ) {
         binding.recyclerviewAbilitiesAgentActivity.adapter = AbilitiesAdapter(
             context = this@AgentActivity,
-            backgroundColor = backgroundColorFormated,
+            backgroundColor = backgroundColorFormatted,
             abilityList = agent.abilities
         ) { ability ->
-            AbilityDialog(ability).show(supportFragmentManager, null)
+            AbilityDialog(ability).show(supportFragmentManager, AbilityDialog.TAG)
+
+
         }
     }
 }
