@@ -1,4 +1,4 @@
-package com.example.valorantwiki.ui.activities
+package com.example.valorantwiki.ui.activities.agent
 
 import android.graphics.Color
 import android.os.Bundle
@@ -8,6 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import coil.load
 import com.example.valorantwiki.databinding.ActivityAgentBinding
 import com.example.valorantwiki.model.Agent
+import com.example.valorantwiki.ui.activities.AGENT_UUID
 import com.example.valorantwiki.ui.activities.extensions.formatStrToColorStr
 import com.example.valorantwiki.ui.dialogs.AbilityDialog
 import com.example.valorantwiki.ui.recyclerview.adapter.AbilitiesAdapter

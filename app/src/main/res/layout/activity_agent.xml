@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".ui.activities.AgentActivity">
+    tools:context=".ui.activities.agent.AgentActivity">
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/progressbar_agent_activity"
         android:layout_width="match_parent"
@@ -19,7 +19,7 @@
             android:layout_gravity="center"
             android:visibility="visible"
             tools:visibility="visible"
-            android:elevation="10dp"
+            android:elevation="@dimen/cardview_default_elevation"
             />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -27,7 +27,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:backgroundTint="@color/invisible"
-        android:background="@color/white_valorant">
+        android:background="@color/white_valorant"
+        >
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
@@ -35,14 +36,15 @@
             android:backgroundTint="@color/invisible"
             app:contentScrim="@color/invisible"
             app:layout_scrollFlags="scroll|enterAlwaysCollapsed"
-            app:titleEnabled="false">
+            app:titleEnabled="false"
+            >
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardview_toolbar_agent_activity"
                 android:layout_width="match_parent"
                 android:layout_height="390dp"
                 android:layout_marginTop="-40dp"
-                app:cardCornerRadius="32dp"
+                app:cardCornerRadius="@dimen/big_radius"
                 app:cardPreventCornerOverlap="true"
                 tools:backgroundTint="@color/red_valorant">
 
@@ -78,9 +80,9 @@
                     <androidx.cardview.widget.CardView
                         android:layout_width="wrap_content"
                         android:layout_height="68dp"
-                        android:layout_margin="16dp"
-                        app:cardCornerRadius="24dp"
-                        app:cardElevation="4dp"
+                        android:layout_margin="@dimen/default_margin"
+                        app:cardCornerRadius="@dimen/default_radius"
+                        app:cardElevation="@dimen/cardview_default_elevation"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent">
 
@@ -92,7 +94,7 @@
                             android:layout_marginHorizontal="42dp"
                             android:fontFamily="@font/roboto_bold_italic"
                             android:textColor="@color/black"
-                            android:textSize="42sp"
+                            android:textSize="@dimen/big_text_size"
                             android:textStyle="bold"
                             tools:text="Sova" />
                     </androidx.cardview.widget.CardView>
@@ -117,7 +119,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/classe"
-                android:layout_margin="16dp"
+                android:layout_margin="@dimen/default_margin"
                 android:textColor="@color/red_valorant"
                 android:textSize="32sp"
                 android:textStyle="bold"

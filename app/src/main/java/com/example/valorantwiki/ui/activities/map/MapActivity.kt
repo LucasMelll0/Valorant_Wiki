@@ -1,4 +1,4 @@
-package com.example.valorantwiki.ui.activities
+package com.example.valorantwiki.ui.activities.map
 
 import android.os.Bundle
 import android.view.View
@@ -8,6 +8,7 @@ import coil.load
 import com.example.valorantwiki.R
 import com.example.valorantwiki.databinding.ActivityMapBinding
 import com.example.valorantwiki.model.Map
+import com.example.valorantwiki.ui.activities.MAP_UUID
 import com.example.valorantwiki.ui.recyclerview.adapter.PlacesAdapter
 import com.example.valorantwiki.viewmodel.mapviewmodel.MapViewModel
 import com.example.valorantwiki.webclient.webClientModel.Place

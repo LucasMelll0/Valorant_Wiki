@@ -20,4 +20,11 @@
     <string name="algo_de_errado_aconteceu">Something has wrong!!</string>
     <string name="recarregar">Refresh</string>
     <string name="Pesquisar">Search</string>
+    <string name="activity_weapon_category_title">Category:</string>
+    <string name="activity_weapon_cost_title">Cost:</string>
+    <string name="activity_weapon_fire_rate_title">Fire Rate:</string>
+    <string name="activity_weapon_run_speed_title">Run Speed:</string>
+    <string name="activity_weapon_equip_speed_title">Equip Speed:</string>
+    <string name="activity_weapon_reload_speed_title">Reload Speed:</string>
+    <string name="activity_weapon_magazine_title">Magazine:</string>
 </resources>

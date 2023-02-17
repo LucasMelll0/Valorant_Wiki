@@ -11,7 +11,7 @@ import coil.load
 import com.example.valorantwiki.databinding.MapItemBinding
 import com.example.valorantwiki.model.Map
 import com.example.valorantwiki.ui.activities.MAP_UUID
-import com.example.valorantwiki.ui.activities.MapActivity
+import com.example.valorantwiki.ui.activities.map.MapActivity
 import com.example.valorantwiki.ui.activities.extensions.goTo
 
 class MapsAdapter(
