@@ -22,4 +22,31 @@
         <item name="cardBackgroundColor">@color/white</item>
         <item name="android:layout_margin">@dimen/default_margin</item>
     </style>
+    <style name="MatchWrap">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="DefaultButton" parent="ThemeOverlay.Material3.Button.ElevatedButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/default_button_height</item>
+        <item name="android:layout_marginHorizontal">@dimen/default_horizontal_margin</item>
+        <item name="android:layout_marginVertical">@dimen/default_vertical_margin</item>
+        <item name="cornerRadius">@dimen/default_radius</item>
+    </style>
+    <style name="DefaultItemImage">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/weapon_skin_item_image_height</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+    <style name="ZeroWrap">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="DefaultProgressBar" parent="Widget.AppCompat.ProgressBar">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:translationZ">50dp</item>
+        <item name="android:visibility">gone</item>
+    </style>
 </resources>

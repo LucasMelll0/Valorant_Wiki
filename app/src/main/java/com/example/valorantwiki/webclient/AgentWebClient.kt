@@ -9,5 +9,6 @@ class AgentWebClient {
 
     suspend fun getAll(language: String): AllAgentsResponse = agentService.getAll(language)
 
-    suspend fun getById(id: String, language: String): AgentResponse = agentService.getById(id, language)
+    suspend fun getById(id: String, language: String): AgentResponse =
+        agentService.getById(id, language)
 }

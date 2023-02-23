@@ -2,6 +2,7 @@
     <string name="app_name">Valorant Wiki</string>
     <string name="agentes">Agents</string>
     <string name="mapas">Maps</string>
+    <string name="armas">Weapons</string>
     <string name="todos">all</string>
     <string name="iniciador">initiator</string>
     <string name="controlador">controller</string>
@@ -27,4 +28,17 @@
     <string name="activity_weapon_equip_speed_title">Equip Speed:</string>
     <string name="activity_weapon_reload_speed_title">Reload Speed:</string>
     <string name="activity_weapon_magazine_title">Magazine:</string>
+    <string name="item_damage_range_head_title">Head:</string>
+    <string name="item_damage_range_body_title">Body:</string>
+    <string name="item_damage_range_legs_title">Legs:</string>
+    <string name="activity_weapon_damage_title">Damage</string>
+    <string name="activity_weapon_show_skins_button_text">Show Skins</string>
+    <string name="activity_weapon_fire_rate_format">%.2f rds/sec</string>
+    <string name="activity_weapon_run_speed_format">%.2f m/sec</string>
+    <string name="activity_weapon_equip_speed_format">%.2f sec</string>
+    <string name="activity_weapon_reload_speed_format">%.2f sec</string>
+    <string name="activity_weapon_magazine_format">%d rds</string>
+    <string name="item_damage_range_format" translatable="false">%1s-%2sm</string>
+    <string name="item_damage_range_damage_format" translatable="false">%.2f</string>
+
 </resources>

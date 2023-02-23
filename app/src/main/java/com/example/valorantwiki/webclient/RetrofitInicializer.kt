@@ -2,6 +2,7 @@ package com.example.valorantwiki.webclient
 
 import com.example.valorantwiki.webclient.services.AgentService
 import com.example.valorantwiki.webclient.services.MapService
+import com.example.valorantwiki.webclient.services.WeaponService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -24,6 +25,7 @@ class RetrofitInicializer {
         .addConverterFactory(MoshiConverterFactory.create())
         .build()
 
-    val agentService = retrofit.create(AgentService::class.java)
-    val mapService = retrofit.create(MapService::class.java)
+    val agentService: AgentService = retrofit.create(AgentService::class.java)
+    val mapService: MapService = retrofit.create(MapService::class.java)
+    val weaponService = retrofit.create(WeaponService::class.java)
 }

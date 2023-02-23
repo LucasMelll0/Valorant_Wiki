@@ -1,4 +1,4 @@
-package com.example.valorantwiki.viewmodel.agentlistviewmodel
+package com.example.valorantwiki.viewmodel.agentviewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -33,7 +33,6 @@ class AgentListViewModel(
                 agents?.let {
                     agentsLiveDataCompanion.postValue(it)
                 }
-
             }
         }
     }

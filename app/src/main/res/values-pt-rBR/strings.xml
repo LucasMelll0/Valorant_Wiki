@@ -3,6 +3,7 @@
     <string name="app_name">Valorant Wiki</string>
     <string name="agentes">Agentes</string>
     <string name="mapas">Mapas</string>
+    <string name="armas">Armas</string>
     <string name="todos">todos</string>
     <string name="iniciador">iniciador</string>
     <string name="controlador">controlador</string>
@@ -21,4 +22,21 @@
     <string name="algo_de_errado_aconteceu">Algo está errado!!</string>
     <string name="recarregar">Recarregar</string>
     <string name="Pesquisar">Pesquisar</string>
+    <string name="activity_weapon_category_title">"Categoria: "</string>
+    <string name="activity_weapon_cost_title">"Preço: "</string>
+    <string name="activity_weapon_fire_rate_title">"Vel. Disparo: "</string>
+    <string name="activity_weapon_run_speed_title">"Vel. Corrida: "</string>
+    <string name="activity_weapon_equip_speed_title">"Vel. Equip: "</string>
+    <string name="activity_weapon_reload_speed_title">"Vel. Recarga: "</string>
+    <string name="activity_weapon_magazine_title">"Carregador: "</string>
+    <string name="item_damage_range_head_title">"Cabeça: "</string>
+    <string name="item_damage_range_body_title">"Corpo: "</string>
+    <string name="item_damage_range_legs_title">"Pernas: "</string>
+    <string name="activity_weapon_damage_title">Dano</string>
+    <string name="activity_weapon_show_skins_button_text">Mostrar Skins</string>
+    <string name="activity_weapon_fire_rate_format">%.2f balas/seg</string>
+    <string name="activity_weapon_run_speed_format">%.2f m/seg</string>
+    <string name="activity_weapon_equip_speed_format">%.2f seg</string>
+    <string name="activity_weapon_reload_speed_format">%.2f seg</string>
+    <string name="activity_weapon_magazine_format">%d balas</string>
 </resources>

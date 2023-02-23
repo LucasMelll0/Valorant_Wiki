@@ -10,11 +10,11 @@ interface AgentService {
 
 
     @GET("agents?&isPlayableCharacter=true")
-    suspend fun getAll(@Query("language") language: String) : AllAgentsResponse
+    suspend fun getAll(@Query("language") language: String): AllAgentsResponse
 
     @GET("agents/{uuid}?")
     suspend fun getById(
         @Path("uuid") uuid: String,
         @Query("language") language: String
-    ) : AgentResponse
+    ): AgentResponse
 }

@@ -2,8 +2,8 @@ package com.example.valorantwiki.di
 
 import com.example.valorantwiki.repository.AgentRepository
 import com.example.valorantwiki.repository.MapRepository
-import com.example.valorantwiki.viewmodel.agentlistviewmodel.AgentListViewModel
-import com.example.valorantwiki.viewmodel.maplistviewmodel.MapListViewModel
+import com.example.valorantwiki.viewmodel.agentviewmodel.AgentListViewModel
+import com.example.valorantwiki.viewmodel.mapviewmodel.MapListViewModel
 import com.example.valorantwiki.webclient.AgentWebClient
 import com.example.valorantwiki.webclient.MapWebClient
 import org.koin.android.ext.koin.androidApplication

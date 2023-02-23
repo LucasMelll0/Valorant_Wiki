@@ -12,7 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.valorantwiki.R
 import com.example.valorantwiki.databinding.FragmentAgentsBinding
 import com.example.valorantwiki.ui.recyclerview.adapter.AgentsAdapter
-import com.example.valorantwiki.viewmodel.agentlistviewmodel.AgentListViewModel
+import com.example.valorantwiki.viewmodel.agentviewmodel.AgentListViewModel
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -59,7 +59,6 @@ class AgentsFragment : Fragment() {
                 override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                     return when(menuItem.itemId){
                         R.id.action_search -> {
-                            Log.i("Test", "onMenuItemSelected: Entrou")
                             val search = menuItem.actionView as? SearchView
                             setsUpSearchView(search)
                             true

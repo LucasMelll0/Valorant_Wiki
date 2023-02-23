@@ -12,7 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.valorantwiki.R
 import com.example.valorantwiki.databinding.FragmentMapsBinding
 import com.example.valorantwiki.ui.recyclerview.adapter.MapsAdapter
-import com.example.valorantwiki.viewmodel.maplistviewmodel.MapListViewModel
+import com.example.valorantwiki.viewmodel.mapviewmodel.MapListViewModel
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel

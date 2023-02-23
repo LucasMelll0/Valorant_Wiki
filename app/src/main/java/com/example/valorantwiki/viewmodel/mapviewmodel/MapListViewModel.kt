@@ -1,4 +1,4 @@
-package com.example.valorantwiki.viewmodel.maplistviewmodel
+package com.example.valorantwiki.viewmodel.mapviewmodel
 
 import android.app.Application
 import androidx.lifecycle.LiveData

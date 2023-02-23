@@ -17,7 +17,7 @@
         android:theme="@style/Theme.ValorantWiki"
         tools:targetApi="31" >
         <activity
-            android:name=".WeaponActivity"
+            android:name=".ui.activities.weapon.WeaponActivity"
             android:exported="false" />
         <activity
             android:name=".ui.activities.map.MapActivity"

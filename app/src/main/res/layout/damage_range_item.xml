@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/MatchWrap"
+    android:orientation="vertical"
+    android:padding="@dimen/default_margin">
+
+        <androidx.constraintlayout.widget.ConstraintLayout style="@style/MatchWrap"
+            android:padding="@dimen/default_margin">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textview_damage_range"
+                style="@style/InformationTextView"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="0-50m" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/_head_damage_title"
+                style="@style/InformationTextView"
+                android:text="@string/item_damage_range_head_title"
+                app:layout_constraintStart_toStartOf="parent"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/textview_damage_range" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textview_head_damage"
+                style="@style/InformationTextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.9"
+                app:layout_constraintStart_toEndOf="@id/_head_damage_title"
+                app:layout_constraintTop_toTopOf="@id/_head_damage_title"
+                tools:text="160" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/_body_damage_title"
+                style="@style/InformationTextView"
+                android:textStyle="bold"
+                android:text="@string/item_damage_range_body_title"
+                app:layout_constraintStart_toStartOf="@id/_head_damage_title"
+                app:layout_constraintTop_toBottomOf="@id/_head_damage_title" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textview_body_damage"
+                style="@style/InformationTextView"
+                app:layout_constraintBottom_toBottomOf="@id/_body_damage_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/_body_damage_title"
+                app:layout_constraintTop_toTopOf="@id/_body_damage_title"
+                app:layout_constraintHorizontal_bias="0.9"
+                tools:text="40"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/_legs_damage_title"
+                style="@style/InformationTextView"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/_body_damage_title"
+                app:layout_constraintStart_toStartOf="@id/_body_damage_title"
+                android:text="@string/item_damage_range_legs_title"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textview_legs_damage"
+                style="@style/InformationTextView"
+                app:layout_constraintTop_toTopOf="@id/_legs_damage_title"
+                app:layout_constraintStart_toEndOf="@id/_legs_damage_title"
+                app:layout_constraintBottom_toBottomOf="@id/_legs_damage_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.9"
+                tools:text="34"/>
+        <com.google.android.material.divider.MaterialDivider
+            style="@style/MatchWrap"
+            app:layout_constraintTop_toBottomOf="@id/_legs_damage_title"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/default_vertical_margin"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>

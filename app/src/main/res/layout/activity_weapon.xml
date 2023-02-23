@@ -45,19 +45,11 @@
                 android:layout_marginTop="-40dp"
                 app:cardCornerRadius="32dp"
                 app:cardPreventCornerOverlap="true"
-                tools:backgroundTint="@color/red_valorant">
+                app:cardBackgroundColor="@color/red_valorant">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:id="@+id/imageview_background_weapon_activity"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        />
-
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/imageview_portrait_weapon_activity"
                         android:layout_width="match_parent"
@@ -117,6 +109,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:cardBackgroundColor="@color/white_valorant"
                 >
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -139,7 +132,7 @@
                         app:layout_constraintBottom_toBottomOf="@id/_weapon_category_title"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.1"
-                        tools:text="Fuzis de Assalto"
+                        tools:text="Assault Rifles"
                        />
                     <androidx.appcompat.widget.AppCompatTextView
                         style="@style/TitleTextView"
@@ -163,7 +156,8 @@
                 style="@style/DefaultCardView"
                 app:layout_constraintTop_toBottomOf="@id/_cardview_shop_informations"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:layout_constraintEnd_toEndOf="parent"
+                app:cardBackgroundColor="@color/white_valorant">
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -183,7 +177,7 @@
                         app:layout_constraintBottom_toBottomOf="@id/_weapon_fire_rate_title"
                         tools:text="9.75 rds/sec"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.1"/>
+                        app:layout_constraintHorizontal_bias="0.8"/>
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/_weapon_run_speed_title"
                         style="@style/TitleTextView"
@@ -198,7 +192,7 @@
                         app:layout_constraintBottom_toBottomOf="@id/_weapon_run_speed_title"
                         tools:text="0.8 m/sec"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.1"/>
+                        app:layout_constraintHorizontal_bias="0.8"/>
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/_weapon_equip_speed_title"
                         style="@style/TitleTextView"
@@ -212,7 +206,7 @@
                         app:layout_constraintStart_toEndOf="@id/_weapon_equip_speed_title"
                         app:layout_constraintBottom_toBottomOf="@id/_weapon_equip_speed_title"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.1"
+                        app:layout_constraintHorizontal_bias="0.8"
                         tools:text="1 sec"/>
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/_weapon_reload_speed_title"
@@ -228,7 +222,7 @@
                         app:layout_constraintBottom_toBottomOf="@id/_weapon_reload_speed_title"
                         app:layout_constraintEnd_toEndOf="parent"
                         tools:text="2.5 sec"
-                        app:layout_constraintHorizontal_bias="0.1"/>
+                        app:layout_constraintHorizontal_bias="0.8"/>
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/_weapon_magazine_title"
                         style="@style/TitleTextView"
@@ -242,9 +236,46 @@
                         app:layout_constraintStart_toEndOf="@id/_weapon_magazine_title"
                         tools:text="25 rds"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.1"/>
+                        app:layout_constraintHorizontal_bias="0.8"/>
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/_cardview_damage_informations"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                style="@style/DefaultCardView"
+                app:cardBackgroundColor="@color/white_valorant"
+                app:layout_constraintTop_toBottomOf="@id/_cardview_weapon_informations">
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    style="@style/MatchWrap"
+                    android:orientation="vertical">
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/TitleTextView"
+                        android:text="@string/activity_weapon_damage_title"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/default_vertical_margin"/>
+                    <com.google.android.material.divider.MaterialDivider
+                        style="@style/MatchWrap"
+                        android:layout_marginHorizontal="@dimen/default_horizontal_margin"/>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerview_damage_ranges_weapon_activity"
+                        style="@style/MatchWrap"
+                        tools:listitem="@layout/damage_range_item"
+                        tools:itemCount="2"
+                        app:layout_constraintTop_toBottomOf="@id/_cardview_weapon_informations"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.cardview.widget.CardView>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_show_skins_weapon_activity"
+                style="@style/DefaultButton"
+                app:layout_constraintTop_toBottomOf="@id/_cardview_damage_informations"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="@string/activity_weapon_show_skins_button_text"
+                />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

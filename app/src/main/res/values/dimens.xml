@@ -8,4 +8,8 @@
     <dimen name="default_text_size">24sp</dimen>
     <dimen name="default_radius">24dp</dimen>
     <dimen name="big_radius">32dp</dimen>
+    <dimen name="default_button_height">58dp</dimen>
+    <dimen name="weapon_skin_item_image_height">300dp</dimen>
+    <dimen name="default_item_height">400dp</dimen>
+    <dimen name="default_cardview_item_height">450dp</dimen>
 </resources>

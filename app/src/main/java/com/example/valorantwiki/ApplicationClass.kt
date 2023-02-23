@@ -16,11 +16,13 @@ class ApplicationClass : Application() {
             androidContext(this@ApplicationClass)
 
             modules(
-                    mainModule,
-                    agentsFragmentModule,
-                    mapsFragmentModule,
-                    agentActivityModule,
-                    mapActivityModule
+                mainModule,
+                agentsFragmentModule,
+                mapsFragmentModule,
+                agentActivityModule,
+                mapActivityModule,
+                weaponsFragmentModule,
+                weaponActivityModule
             )
         }
     }
