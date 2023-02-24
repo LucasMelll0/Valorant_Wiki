@@ -12,7 +12,7 @@
             style="@style/DefaultCardView"
             android:layout_height="@dimen/default_cardview_item_height"
             android:layout_margin="0dp"
-            app:cardBackgroundColor="@color/green_valorant">
+            app:cardBackgroundColor="@color/red_valorant">
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">

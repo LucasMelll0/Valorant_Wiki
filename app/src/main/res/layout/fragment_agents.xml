@@ -68,6 +68,7 @@
             tools:listitem="@layout/agent_item"
             />
         <com.google.android.material.bottomnavigation.BottomNavigationView
+            style="@style/Widget.Design.BottomNavigationView"
             android:id="@+id/bottomNavigation"
             android:layout_width="match_parent"
             android:layout_height="70dp"

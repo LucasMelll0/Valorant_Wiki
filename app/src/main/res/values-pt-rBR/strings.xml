@@ -39,4 +39,7 @@
     <string name="activity_weapon_equip_speed_format">%.2f seg</string>
     <string name="activity_weapon_reload_speed_format">%.2f seg</string>
     <string name="activity_weapon_magazine_format">%d balas</string>
+    <string name="tab_layout_for_alternates_between_screens">Guia de Layouts para alternar entre telas</string>
+    <string name="standard_key">padrão</string>
+    <string name="favorite_key">favorita</string>
 </resources>

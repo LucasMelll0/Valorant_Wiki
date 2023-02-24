@@ -6,6 +6,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.valorantwiki.R
@@ -76,7 +77,7 @@ class WeaponsFragment : Fragment() {
                         else -> false
                     }
                 }
-            })
+            }, viewLifecycleOwner, Lifecycle.State.RESUMED)
         }
     }
 

@@ -41,5 +41,8 @@
     <string name="item_damage_range_format" translatable="false">%1s-%2sm</string>
     <string name="item_damage_range_damage_format" translatable="false">%.2f</string>
     <string name="bottom_sheet_skins_title" translatable="false">Skins</string>
+    <string name="tab_layout_for_alternates_between_screens">Tab layout for alternates between screens</string>
+    <string name="standard_key">standard</string>
+    <string name="favorite_key">favorite</string>
 
 </resources>

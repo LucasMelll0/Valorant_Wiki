@@ -24,10 +24,13 @@
             app:layout_constraintEnd_toEndOf="parent"
             />
     </androidx.appcompat.widget.LinearLayoutCompat>
-    <androidx.appcompat.widget.Toolbar
+    <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar_main_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:subtitle="@string/app_name"
+        app:subtitleCentered="true"
+        app:subtitleTextColor="@color/red_valorant"
         android:backgroundTint="@color/white_valorant"
         android:background="@color/white_valorant"
         app:title="@null"
@@ -44,6 +47,8 @@
         app:tabGravity="fill"
         app:tabMode="fixed"
         app:tabMaxWidth="0dp"
+        android:labelFor="@id/tabLayout"
+        android:contentDescription="@string/tab_layout_for_alternates_between_screens"
         />
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"
