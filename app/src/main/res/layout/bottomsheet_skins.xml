@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white_valorant">
+    <View
+        android:id="@+id/_drag_handle"
+        android:layout_width="@dimen/bottom_sheet_drag_handle_width"
+        android:layout_height="@dimen/bottom_sheet_drag_handle_height"
+        android:background="@drawable/rounded_background"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/default_vertical_margin"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview_weapon_skins"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/_drag_handle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0"
+        android:layout_marginBottom="@dimen/default_vertical_margin"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

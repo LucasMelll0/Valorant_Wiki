@@ -40,5 +40,6 @@
     <string name="activity_weapon_magazine_format">%d rds</string>
     <string name="item_damage_range_format" translatable="false">%1s-%2sm</string>
     <string name="item_damage_range_damage_format" translatable="false">%.2f</string>
+    <string name="bottom_sheet_skins_title" translatable="false">Skins</string>
 
 </resources>

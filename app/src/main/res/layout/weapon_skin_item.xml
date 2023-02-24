@@ -2,20 +2,32 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/DefaultCardView">
+    style="@style/DefaultCardView"
+    app:cardBackgroundColor="@color/white_valorant">
     <androidx.constraintlayout.widget.ConstraintLayout
         style="@style/MatchWrap">
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imageview_weapon_skin_item"
-            style="@style/DefaultItemImage"
-            app:layout_constraintTop_toTopOf="parent"
+        <androidx.cardview.widget.CardView
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:src="@tools:sample/backgrounds/scenic"/>
+            app:layout_constraintTop_toTopOf="parent"
+            style="@style/DefaultCardView"
+            android:layout_margin="0dp"
+            android:id="@+id/_cardview_skin_image"
+            app:cardBackgroundColor="@color/red_valorant">
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imageview_weapon_skin_item"
+                style="@style/DefaultItemImage"
+                android:scaleType="fitCenter"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:src="@tools:sample/backgrounds/scenic"/>
+        </androidx.cardview.widget.CardView>
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textview_name_weapon_skin_item"
             style="@style/InformationTextView"
-            app:layout_constraintTop_toBottomOf="@id/imageview_weapon_skin_item"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@id/_cardview_skin_image"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             tools:text="Luna Vandal"

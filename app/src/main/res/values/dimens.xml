@@ -12,4 +12,6 @@
     <dimen name="weapon_skin_item_image_height">300dp</dimen>
     <dimen name="default_item_height">400dp</dimen>
     <dimen name="default_cardview_item_height">450dp</dimen>
+    <dimen name="bottom_sheet_drag_handle_width">40dp</dimen>
+    <dimen name="bottom_sheet_drag_handle_height">10dp</dimen>
 </resources>
