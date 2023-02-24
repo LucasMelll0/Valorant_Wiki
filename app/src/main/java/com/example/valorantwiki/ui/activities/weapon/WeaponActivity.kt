@@ -33,7 +33,6 @@ class WeaponActivity : AppCompatActivity() {
         setContentView(binding.root)
         setsUpBackButton()
         tryToGetWeapon()
-
     }
 
     private fun setsUpBackButton() {
@@ -82,6 +81,7 @@ class WeaponActivity : AppCompatActivity() {
             bottomSheetDialog.setContentView(root)
             bottomSheetDialog.show()
         }
+
     }
 
     private fun fillFields(weapon: Weapon) {

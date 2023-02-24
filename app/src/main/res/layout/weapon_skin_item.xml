@@ -34,11 +34,5 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:textStyle="bold"
             android:layout_marginVertical="@dimen/default_vertical_margin"/>
-        <com.google.android.material.divider.MaterialDivider
-            style="@style/ZeroWrap"
-            app:layout_constraintStart_toStartOf="@id/textview_name_weapon_skin_item"
-            app:layout_constraintEnd_toEndOf="@id/textview_name_weapon_skin_item"
-            app:layout_constraintTop_toBottomOf="@id/textview_name_weapon_skin_item"
-            android:layout_marginHorizontal="@dimen/default_horizontal_margin"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
