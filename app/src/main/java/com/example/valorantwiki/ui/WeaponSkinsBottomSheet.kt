@@ -35,7 +35,6 @@ class WeaponSkinsBottomSheet(private val skins: List<WeaponSkin>) :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        retainInstance = true
         setsUpRecyclerViewSkins()
         val bottomSheetBehavior = BottomSheetBehavior.from(view.parent as View)
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED

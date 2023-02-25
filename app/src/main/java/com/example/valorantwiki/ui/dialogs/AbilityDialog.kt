@@ -26,7 +26,6 @@ class AbilityDialog(private val ability: Ability) : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        retainInstance = true
         setsUpView()
     }
 
