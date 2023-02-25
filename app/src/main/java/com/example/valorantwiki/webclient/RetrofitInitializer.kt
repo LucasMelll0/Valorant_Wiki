@@ -8,7 +8,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-class RetrofitInicializer {
+class RetrofitInitializer {
 
     private val client by lazy {
         val logging = HttpLoggingInterceptor()
@@ -20,7 +20,7 @@ class RetrofitInicializer {
 
 
     private val retrofit: Retrofit = Retrofit.Builder()
-        .client(client)
+        /*.client(client)*/
         .baseUrl("https://valorant-api.com/v1/")
         .addConverterFactory(MoshiConverterFactory.create())
         .build()

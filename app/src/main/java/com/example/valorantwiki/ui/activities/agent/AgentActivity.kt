@@ -24,8 +24,12 @@ class AgentActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        tryToGetAgent()
         setsUpButtonBack()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        tryToGetAgent()
     }
 
     private fun setsUpButtonBack() {

@@ -4,7 +4,7 @@ import com.example.valorantwiki.webclient.webClientModel.AllMapsResponse
 import com.example.valorantwiki.webclient.webClientModel.MapResponse
 
 class MapWebClient {
-    private val mapService = RetrofitInicializer().mapService
+    private val mapService = RetrofitInitializer().mapService
 
     suspend fun getAll(language: String): AllMapsResponse = mapService.getAll(language)
 

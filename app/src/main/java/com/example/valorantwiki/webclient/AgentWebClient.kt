@@ -5,7 +5,7 @@ import com.example.valorantwiki.webclient.webClientModel.AllAgentsResponse
 
 class AgentWebClient {
 
-    private val agentService = RetrofitInicializer().agentService
+    private val agentService = RetrofitInitializer().agentService
 
     suspend fun getAll(language: String): AllAgentsResponse = agentService.getAll(language)
 

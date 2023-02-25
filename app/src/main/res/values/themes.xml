@@ -14,5 +14,6 @@
         <!-- Customize your theme here. -->
 
         <item name="fontFamily">@font/roboto_medium_italic</item>
+        <item name="bottomSheetDialogTheme">@style/ThemeOverlay.App.BottomSheetDialog</item>
     </style>
 </resources>

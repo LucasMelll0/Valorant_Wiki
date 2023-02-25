@@ -4,19 +4,17 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import coil.load
 import com.example.valorantwiki.R
 import com.example.valorantwiki.databinding.ActivityWeaponBinding
-import com.example.valorantwiki.databinding.BottomsheetSkinsBinding
 import com.example.valorantwiki.model.Weapon
+import com.example.valorantwiki.ui.WeaponSkinsBottomSheet
 import com.example.valorantwiki.ui.activities.WEAPON_UUID
 import com.example.valorantwiki.ui.recyclerview.adapter.DamageRangesAdapter
 import com.example.valorantwiki.ui.recyclerview.adapter.WeaponSkinsAdapter
 import com.example.valorantwiki.viewmodel.weaponViewModel.WeaponViewModel
 import com.example.valorantwiki.webclient.webClientModel.DamageRange
-import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -26,7 +24,6 @@ class WeaponActivity : AppCompatActivity() {
     private val binding by lazy { ActivityWeaponBinding.inflate(layoutInflater) }
     private val viewModel: WeaponViewModel by viewModel()
     private val damageRangesAdapter: DamageRangesAdapter by inject()
-    private val weaponSkinsAdapter: WeaponSkinsAdapter by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,21 +64,8 @@ class WeaponActivity : AppCompatActivity() {
     }
 
     private fun setsUpBottomSheetSkins(weapon: Weapon) {
-        val bottomSheetDialog = BottomSheetDialog(
-            this@WeaponActivity,
-            com.google.android.material.R.style.Theme_Design_BottomSheetDialog
-        )
-        BottomsheetSkinsBinding.inflate(layoutInflater).apply {
-            recyclerviewWeaponSkins
-                .layoutManager = GridLayoutManager(this@WeaponActivity, 2).apply {
-                orientation = GridLayoutManager.HORIZONTAL
-            }
-            recyclerviewWeaponSkins.adapter = weaponSkinsAdapter
-            weaponSkinsAdapter.submitList(weapon.skins)
-            bottomSheetDialog.setContentView(root)
-            bottomSheetDialog.show()
-        }
-
+        val bottomSheetSkins = WeaponSkinsBottomSheet(weapon.skins)
+        bottomSheetSkins.show(supportFragmentManager, WeaponSkinsBottomSheet.TAG)
     }
 
     private fun fillFields(weapon: Weapon) {

@@ -5,7 +5,7 @@ import com.example.valorantwiki.webclient.webClientModel.WeaponResponse
 
 class WeaponWebClient {
 
-    private val weaponService = RetrofitInicializer().weaponService
+    private val weaponService = RetrofitInitializer().weaponService
 
     suspend fun getAll(language: String): AllWeaponResponse = weaponService.getAll(language)
 
