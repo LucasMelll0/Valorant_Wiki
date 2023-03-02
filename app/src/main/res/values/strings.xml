@@ -44,5 +44,7 @@
     <string name="tab_layout_for_alternates_between_screens">Tab layout for alternates between screens</string>
     <string name="standard_key">standard</string>
     <string name="favorite_key">favorite</string>
+    <string name="activity_map_gallery_title">Gallery</string>
+    <string name="activity_map_button_show_gallery">Show Gallery</string>
 
 </resources>

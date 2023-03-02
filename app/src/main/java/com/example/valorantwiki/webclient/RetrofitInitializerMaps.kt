@@ -1,13 +1,14 @@
 package com.example.valorantwiki.webclient
 
-import com.example.valorantwiki.webclient.services.AgentService
-import com.example.valorantwiki.webclient.services.WeaponService
+import com.example.valorantwiki.webclient.services.MapService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-class RetrofitInitializer {
+class RetrofitInitializerMaps {
+
+    private val baseUrl =  "http://ec2-34-234-223-213.compute-1.amazonaws.com:8080/api/"
 
     private val client by lazy {
         val logging = HttpLoggingInterceptor()
@@ -17,13 +18,10 @@ class RetrofitInitializer {
             .build()
     }
 
-
     private val retrofit: Retrofit = Retrofit.Builder()
-        /*.client(client)*/
-        .baseUrl("https://valorant-api.com/v1/")
+        .baseUrl(baseUrl)
         .addConverterFactory(MoshiConverterFactory.create())
         .build()
 
-    val agentService: AgentService = retrofit.create(AgentService::class.java)
-    val weaponService = retrofit.create(WeaponService::class.java)
+    val mapService: MapService = retrofit.create(MapService::class.java)
 }

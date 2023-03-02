@@ -1,4 +1,4 @@
-package com.example.valorantwiki.ui
+package com.example.valorantwiki.ui.bottomsheets
 
 import android.os.Bundle
 import android.util.Log

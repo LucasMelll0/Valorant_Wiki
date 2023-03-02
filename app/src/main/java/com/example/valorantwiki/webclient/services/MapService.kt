@@ -1,21 +1,20 @@
 package com.example.valorantwiki.webclient.services
 
-import com.example.valorantwiki.webclient.webClientModel.AllMapsResponse
-import com.example.valorantwiki.webclient.webClientModel.MapResponse
+import com.example.valorantwiki.webclient.webClientModel.MapResponseClass
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface MapService {
 
-    @GET("maps?language=pt-BR")
+    @GET("maps?")
     suspend fun getAll(
         @Query("language") language: String
-    ) : AllMapsResponse
+    ) : List<MapResponseClass>
 
-    @GET("maps/{uuid}")
+    @GET("maps/{uuid}?")
     suspend fun getById(
         @Path("uuid") uuid: String,
         @Query("language") language: String
-    ) : MapResponse
+    ) : MapResponseClass
 }

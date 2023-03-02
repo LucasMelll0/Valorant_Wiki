@@ -12,23 +12,23 @@ class MapListViewModel(application: Application, private val repository: MapRepo
 
     private val language = application.getString(R.string.linguagem)
 
-
     companion object {
-        private val mapsLiveDataCompanion = MutableLiveData<List<com.example.valorantwiki.model.Map>>()
+        private val mapsLiveDataCompanion =
+            MutableLiveData<List<com.example.valorantwiki.model.Map>>()
     }
 
-    internal val mapsLiveData: LiveData<List<com.example.valorantwiki.model.Map>> = mapsLiveDataCompanion
+    internal val mapsLiveData: LiveData<List<com.example.valorantwiki.model.Map>> =
+        mapsLiveDataCompanion
 
     suspend fun getAll() {
         mapsLiveData.value ?: run {
             val response = repository.getAll(language)
-            if(response.status == 200){
-                val maps = response.data.map { map ->
-                    map.map
-                }
-                mapsLiveDataCompanion.postValue(maps)
-
+            val maps = response.map { map ->
+                map.map
             }
+            mapsLiveDataCompanion.postValue(maps)
+
+
         }
     }
 }

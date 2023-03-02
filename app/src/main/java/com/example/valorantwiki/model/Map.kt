@@ -1,13 +1,11 @@
 package com.example.valorantwiki.model
-
-import com.example.valorantwiki.webclient.webClientModel.Place
-
 data class Map(
     val uuid: String,
     val name: String,
+    val description: String,
     val miniMap: String,
     val image: String,
-    val places: List<Place>
+    val gallery: List<String>
 
 ){
     override fun toString(): String {

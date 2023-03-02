@@ -9,10 +9,9 @@ import coil.load
 import com.example.valorantwiki.R
 import com.example.valorantwiki.databinding.ActivityWeaponBinding
 import com.example.valorantwiki.model.Weapon
-import com.example.valorantwiki.ui.WeaponSkinsBottomSheet
+import com.example.valorantwiki.ui.bottomsheets.WeaponSkinsBottomSheet
 import com.example.valorantwiki.ui.activities.WEAPON_UUID
 import com.example.valorantwiki.ui.recyclerview.adapter.DamageRangesAdapter
-import com.example.valorantwiki.ui.recyclerview.adapter.WeaponSkinsAdapter
 import com.example.valorantwiki.viewmodel.weaponViewModel.WeaponViewModel
 import com.example.valorantwiki.webclient.webClientModel.DamageRange
 import kotlinx.coroutines.launch

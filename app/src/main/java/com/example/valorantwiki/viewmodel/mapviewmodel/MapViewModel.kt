@@ -11,13 +11,11 @@ class MapViewModel(application: Application, private val repository: MapReposito
     private val language = application.getString(R.string.linguagem)
     internal val mapLiveData = MutableLiveData<com.example.valorantwiki.model.Map>()
 
-    suspend fun getById(id: String){
+    suspend fun getById(id: String) {
         mapLiveData.value ?: run {
             val response = repository.getById(id, language)
-            if (response.status == 200){
-                val map = response.data.map
-                mapLiveData.postValue(map)
-            }
+            val map = response.map
+            mapLiveData.postValue(map)
         }
     }
 
