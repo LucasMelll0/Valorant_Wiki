@@ -107,6 +107,12 @@
                         android:text="@string/descricao"
                         android:layout_margin="@dimen/default_margin"
                         />
+                    <com.google.android.material.divider.MaterialDivider
+                        style="@style/ZeroWrap"
+                        android:layout_marginHorizontal="@dimen/default_horizontal_margin"
+                        app:layout_constraintTop_toBottomOf="@id/_map_description_title"
+                        app:layout_constraintStart_toStartOf="@id/_map_description_title"
+                        app:layout_constraintEnd_toEndOf="@id/_map_description_title"/>
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/textview_description_map_activity"
                         style="@style/InformationTextView"
@@ -149,17 +155,35 @@
                         style="@style/TitleTextView"
                         android:text="@string/activity_map_gallery_title"
                         android:gravity="center"
+                        android:layout_margin="@dimen/default_margin"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         />
+                    <com.google.android.material.divider.MaterialDivider
+                        style="@style/ZeroWrap"
+                        android:layout_marginHorizontal="@dimen/default_horizontal_margin"
+                        app:layout_constraintTop_toBottomOf="@id/_gallery_title"
+                        app:layout_constraintStart_toStartOf="@id/_gallery_title"
+                        app:layout_constraintEnd_toEndOf="@id/_gallery_title"/>
                     <androidx.viewpager2.widget.ViewPager2
                         android:id="@+id/viewpager_gallery"
                         style="@style/MatchWrap"
+                        android:layout_margin="@dimen/default_margin"
                         app:layout_constraintTop_toBottomOf="@id/_gallery_title"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"/>
+                        app:layout_constraintEnd_toEndOf="parent" />
+                    <com.google.android.material.tabs.TabLayout
+                        android:id="@+id/tablayout_gallery"
+                        style="@style/MatchWrap"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:tabBackground="@drawable/tab_selector"
+                        app:tabGravity="center"
+                        app:tabIndicatorHeight="0dp"
+                        app:layout_constraintTop_toBottomOf="@id/viewpager_gallery"
+                        />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 

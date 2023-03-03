@@ -42,4 +42,6 @@
     <string name="tab_layout_for_alternates_between_screens">Guia de Layouts para alternar entre telas</string>
     <string name="standard_key">padrão</string>
     <string name="favorite_key">favorita</string>
+    <string name="activity_map_gallery_title">Galeria</string>
+    <string name="activity_map_button_show_gallery">Mostrar Galeria</string>
 </resources>

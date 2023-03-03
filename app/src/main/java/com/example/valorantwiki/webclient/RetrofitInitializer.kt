@@ -19,7 +19,7 @@ class RetrofitInitializer {
 
 
     private val retrofit: Retrofit = Retrofit.Builder()
-        /*.client(client)*/
+        .client(client)
         .baseUrl("https://valorant-api.com/v1/")
         .addConverterFactory(MoshiConverterFactory.create())
         .build()

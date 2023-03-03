@@ -15,6 +15,8 @@ import com.example.valorantwiki.model.Map
 import com.example.valorantwiki.ui.activities.MAP_UUID
 import com.example.valorantwiki.ui.recyclerview.adapter.GalleryAdapter
 import com.example.valorantwiki.viewmodel.mapviewmodel.MapViewModel
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -65,10 +67,11 @@ class MapActivity : AppCompatActivity() {
 
     private fun setsUpButtonShowGallery(gallery: List<String>) {
         val viewPager = binding.viewpagerGallery
+        val tabLayout = binding.tablayoutGallery
         val compositePageTransformer = CompositePageTransformer()
         compositePageTransformer.addTransformer(
             MarginPageTransformer(
-                (20 * Resources.getSystem()
+                (5 * Resources.getSystem()
                     .displayMetrics.density).toInt()
             )
         )
@@ -77,7 +80,7 @@ class MapActivity : AppCompatActivity() {
             page.scaleY = (0.80f + r * 0.20f)
         }
         viewPager.also {
-            it.clipChildren = false
+            it.clipChildren = true
             it.clipToPadding = false
             it.offscreenPageLimit = 3
             (it.getChildAt(0) as RecyclerView).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
@@ -85,6 +88,10 @@ class MapActivity : AppCompatActivity() {
             it.adapter = this.adapter
         }
         adapter.submitList(gallery)
+        // Conecta o viewPager ao TabLayout(dot indicator).
+        val mediator = TabLayoutMediator(tabLayout, viewPager) { _: TabLayout.Tab, _: Int ->
+
+        }.attach()
     }
 
     private fun setsUpMiniMapImage(image: String) {

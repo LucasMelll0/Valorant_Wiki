@@ -19,6 +19,7 @@ class RetrofitInitializerMaps {
     }
 
     private val retrofit: Retrofit = Retrofit.Builder()
+        .client(client)
         .baseUrl(baseUrl)
         .addConverterFactory(MoshiConverterFactory.create())
         .build()
