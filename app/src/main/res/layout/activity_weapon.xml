@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".ui.activities.weapon.WeaponActivity">
+    tools:context=".ui.activities.weapon.WeaponActivity"
+    android:background="@color/white_valorant">
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/progressbar_weapon_activity"
         android:layout_width="match_parent"
@@ -98,8 +99,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fillViewport="true"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:background="@color/white_valorant">
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
