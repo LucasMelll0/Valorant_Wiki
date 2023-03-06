@@ -4,8 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white_valorant"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".ui.activities.agent.AgentActivity">
+
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/progressbar_agent_activity"
         android:layout_width="match_parent"
@@ -13,22 +15,20 @@
         android:background="@color/white_valorant"
         android:elevation="@dimen/cardview_default_elevation"
         android:visibility="gone">
+
         <ProgressBar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:visibility="visible"
-            tools:visibility="visible"
             android:elevation="@dimen/cardview_default_elevation"
-            />
+            android:visibility="visible"
+            tools:visibility="visible" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:backgroundTint="@color/invisible"
+        style="@style/MatchWrap"
         android:background="@color/white_valorant"
-        >
+        tools:backgroundTint="@color/invisible">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
@@ -36,8 +36,7 @@
             android:backgroundTint="@color/invisible"
             app:contentScrim="@color/invisible"
             app:layout_scrollFlags="scroll|enterAlwaysCollapsed"
-            app:titleEnabled="false"
-            >
+            app:titleEnabled="false">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardview_toolbar_agent_activity"
@@ -51,19 +50,19 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
+
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/imageview_background_agent_activity"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        />
+                        app:layout_constraintStart_toStartOf="parent" />
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/imageview_portrait_agent_activity"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:translationZ="@dimen/cardview_default_elevation"/>
+                        android:translationZ="@dimen/cardview_default_elevation" />
 
                     <androidx.appcompat.widget.AppCompatImageButton
                         android:id="@+id/imagebutton_back_agent_activity"
@@ -114,88 +113,110 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/__class_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/classe"
-                android:layout_margin="@dimen/default_margin"
-                android:textColor="@color/red_valorant"
-                android:textSize="32sp"
-                android:textStyle="bold"
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/_cardview_class"
+                style="@style/DefaultCardView"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textview_class_agent_activity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:textColor="@color/carbon"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@id/__class_title"
-                app:layout_constraintTop_toBottomOf="@id/__class_title"
-                tools:text="Iniciador" />
+                <androidx.constraintlayout.widget.ConstraintLayout style="@style/MatchWrap">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textview_class_description_agent_activity"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:textColor="@color/carbon"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@id/__class_title"
-                app:layout_constraintTop_toBottomOf="@id/textview_class_agent_activity"
-                tools:text="Iniciadores desafiam situações arriscadas, preparando a equipe para entrar em terreno contestado e rechaçar defensores." />
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/_class_title"
+                        style="@style/TitleTextView"
+                        android:layout_margin="@dimen/default_margin"
+                        android:text="@string/classe"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/__agent_description_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/textview_class_description_agent_activity"
-                app:layout_constraintStart_toStartOf="@id/__class_title"
-                android:text="@string/descricao"
-                android:textColor="@color/red_valorant"
-                android:textStyle="bold"
-                android:textSize="32sp"
-                android:layout_marginTop="10dp"/>
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textview_agent_description_agent_activity"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/__agent_description_title"
-                app:layout_constraintStart_toStartOf="@id/__agent_description_title"
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/textview_class_agent_activity"
+                        style="@style/SubTitleTextView"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/_class_title"
+                        tools:text="Iniciador" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/textview_class_description_agent_activity"
+                        style="@style/InformationTextView"
+                        android:layout_margin="@dimen/default_horizontal_margin"
+                        android:layout_marginHorizontal="@dimen/default_horizontal_margin"
+                        android:gravity="center"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/textview_class_agent_activity"
+                        tools:text="Iniciadores desafiam situações arriscadas, preparando a equipe para entrar em terreno contestado e rechaçar defensores." />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/_cardview_description"
+                style="@style/DefaultCardView"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="16dp"
-                tools:text="Nascido sob o eterno inverno das tundras russas, Sova rastreia, encontra e elimina inimigos com eficiência e precisão implacáveis. Seu arco personalizado e suas habilidades inigualáveis de reconhecimento garantem que nenhuma presa escape."
-                android:textColor="@color/carbon"
-                android:textSize="24sp"
-                />
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/__abilities_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/textview_agent_description_agent_activity"
-                app:layout_constraintStart_toStartOf="@id/__agent_description_title"
-                android:text="@string/habilidades"
-                android:textColor="@color/red_valorant"
-                android:textSize="32sp"
-                android:textStyle="bold"
-                android:layout_marginTop="10dp"/>
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerview_abilities_agent_activity"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/__abilities_title"
-                app:layout_constraintStart_toStartOf="@id/__abilities_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/_cardview_class">
+
+                <androidx.constraintlayout.widget.ConstraintLayout style="@style/MatchWrap">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/_agent_description_title"
+                        style="@style/TitleTextView"
+                        android:layout_margin="@dimen/default_margin"
+                        android:text="@string/descricao"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/textview_agent_description_agent_activity"
+                        style="@style/InformationTextView"
+                        android:layout_margin="@dimen/default_margin"
+                        android:gravity="center"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/_agent_description_title"
+                        tools:text="Nascido sob o eterno inverno das tundras russas, Sova rastreia, encontra e elimina inimigos com eficiência e precisão implacáveis. Seu arco personalizado e suas habilidades inigualáveis de reconhecimento garantem que nenhuma presa escape." />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                style="@style/DefaultCardView"
+                app:layout_constraintTop_toBottomOf="@id/_cardview_description"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="16dp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/ability_item"
-                tools:itemCount="4"/>
+                app:layout_constraintBottom_toBottomOf="parent">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    style="@style/MatchWrap">
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/_abilities_title"
+                        android:text="@string/habilidades"
+                        style="@style/TitleTextView"
+                         app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_margin="@dimen/default_margin"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerview_abilities_agent_activity"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/default_margin"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/_abilities_title"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        tools:itemCount="4"
+                        tools:listitem="@layout/ability_item" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
