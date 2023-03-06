@@ -63,13 +63,19 @@ Uso de BottomNavigation e diffUtils para o filtro.
 Uso de SearchView
 
 ### Detalhes dos Agentes
-<img src="screenshots/Detalhes Agentes.gif" width="60%"/>
+<img src="screenshots/Agentes.gif" width="60%"/>
 
 
 ### Detalhes dos Mapas
-<img src="screenshots/Mapas.gif" width="60%"/>
+<img src="screenshots/Detalhes Mapas.gif" width="60%"/>
 
 Uso de TabLayout para navegação entre agentes e mapas.
+ViewPager2 para galeria de imagens.
+
+### Detalhes das Armas
+<img src="screenshots/Armas.gif" width="60%"/>
+
+Uso de BottomSheet para mostrar as skins das armas.
 
 
 # Licença
