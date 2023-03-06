@@ -44,4 +44,5 @@
     <string name="favorite_key">favorita</string>
     <string name="activity_map_gallery_title">Galeria</string>
     <string name="activity_map_button_show_gallery">Mostrar Galeria</string>
+    <string name="tablayout_map_gallery_dot_indicator">Indicador da galeria</string>
 </resources>
