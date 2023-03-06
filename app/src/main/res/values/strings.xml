@@ -46,5 +46,6 @@
     <string name="favorite_key">favorite</string>
     <string name="activity_map_gallery_title">Gallery</string>
     <string name="activity_map_button_show_gallery">Show Gallery</string>
+    <string name="tablayout_map_gallery_dot_indicator">Gallery dot indicator</string>
 
 </resources>

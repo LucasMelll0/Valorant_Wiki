@@ -91,7 +91,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 style="@style/DefaultCardView"
                 android:id="@+id/_cardview_description"
                 app:layout_constraintTop_toTopOf="parent"
@@ -126,8 +126,8 @@
                         android:layout_margin="@dimen/default_margin"
                         tools:text="A mysterious structure housing an astral conduit radiates with ancient power. Great stone doors provide a variety of movement opportunities and unlock the paths to three mysterious sites."/>
                 </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardview_minimap"
                 android:layout_height="@dimen/default_item_height"
                 app:layout_constraintTop_toBottomOf="@id/_cardview_description"
@@ -141,8 +141,8 @@
                     android:layout_height="match_parent"
                     android:layout_margin="@dimen/default_margin"
                     />
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
                 style="@style/DefaultCardView"
                 app:layout_constraintTop_toBottomOf="@id/cardview_minimap"
                 app:layout_constraintStart_toStartOf="parent"
@@ -160,32 +160,28 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         />
-                    <com.google.android.material.divider.MaterialDivider
-                        style="@style/ZeroWrap"
-                        android:layout_marginHorizontal="@dimen/default_horizontal_margin"
-                        app:layout_constraintTop_toBottomOf="@id/_gallery_title"
-                        app:layout_constraintStart_toStartOf="@id/_gallery_title"
-                        app:layout_constraintEnd_toEndOf="@id/_gallery_title"/>
                     <androidx.viewpager2.widget.ViewPager2
                         android:id="@+id/viewpager_gallery"
                         style="@style/MatchWrap"
-                        android:layout_margin="@dimen/default_margin"
+                        android:layout_marginHorizontal="@dimen/default_horizontal_margin"
                         app:layout_constraintTop_toBottomOf="@id/_gallery_title"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintBottom_toTopOf="@id/tablayout_gallery"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent" />
                     <com.google.android.material.tabs.TabLayout
                         android:id="@+id/tablayout_gallery"
                         style="@style/MatchWrap"
+                        android:contentDescription="@string/tablayout_map_gallery_dot_indicator"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:tabBackground="@drawable/tab_selector"
                         app:tabGravity="center"
                         app:tabIndicatorHeight="0dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/viewpager_gallery"
                         />
                 </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -19,8 +19,9 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="cardCornerRadius">@dimen/default_radius</item>
         <item name="cardElevation">@dimen/cardview_default_elevation</item>
-        <item name="cardBackgroundColor">@color/white</item>
+        <item name="cardBackgroundColor">@color/white_valorant</item>
         <item name="android:layout_margin">@dimen/default_margin</item>
+        <item name="strokeColor">@color/white_valorant</item>
     </style>
     <style name="MatchWrap">
         <item name="android:layout_width">match_parent</item>
