@@ -8,7 +8,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 
 class RetrofitInitializerMaps {
 
-    private val baseUrl =  "http://ec2-34-234-223-213.compute-1.amazonaws.com:8080/api/"
+    private val baseUrl =  "http://ec2-3-238-157-76.compute-1.amazonaws.com:8080/api/"
 
     private val client by lazy {
         val logging = HttpLoggingInterceptor()
