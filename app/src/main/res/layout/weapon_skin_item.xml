@@ -14,14 +14,28 @@
             android:layout_margin="0dp"
             android:id="@+id/_cardview_skin_image"
             app:cardBackgroundColor="@color/red_valorant">
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/imageview_weapon_skin_item"
-                style="@style/DefaultItemImage"
-                android:scaleType="fitCenter"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                tools:src="@tools:sample/backgrounds/scenic"/>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                style="@style/MatchWrap">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:srcCompat="@drawable/weapon_background"
+                    />
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imageview_weapon_skin_item"
+                    style="@style/DefaultItemImage"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:src="@tools:sample/backgrounds/scenic"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textview_name_weapon_skin_item"

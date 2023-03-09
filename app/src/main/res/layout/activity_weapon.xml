@@ -52,10 +52,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                     <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/weapon_background"/>
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/imageview_portrait_weapon_activity"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:translationZ="@dimen/cardview_default_elevation"/>
+                        android:elevation="@dimen/cardview_default_elevation"/>
 
                     <androidx.appcompat.widget.AppCompatImageButton
                         android:id="@+id/imagebutton_back_weapon_activity"

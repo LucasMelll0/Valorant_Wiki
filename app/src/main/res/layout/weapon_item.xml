@@ -17,10 +17,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/weapon_background"
+                    android:scaleType="centerCrop"/>
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/imageview_weapon_image_item"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="fitCenter"
+                    android:elevation="@dimen/cardview_default_elevation"
                     android:rotation="45"
                     />
             </androidx.constraintlayout.widget.ConstraintLayout>

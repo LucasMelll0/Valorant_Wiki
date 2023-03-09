@@ -13,7 +13,7 @@ class MapRepository(
 
     suspend fun getAll(language: String): List<MapResponseClass> {
         return try {
-            mapWebClient.getAll(language)
+            mapWebClient.getAll(language).sortedBy { it.map.name }
         }catch (e: Exception) {
             Log.w(TAG, "getAll: ", e)
             emptyList()
